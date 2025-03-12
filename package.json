@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "react-gantt-chart": "^0.3.0-rc.11",
+    "sass-embedded": "^1.85.1"
+  },
+  "dependencies": {
+    "frappe-gantt-react": "^0.2.2",
+    "react-gantt": "^2.1.8"
+  }
+}
