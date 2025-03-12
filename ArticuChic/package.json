@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --build=/ArticuChic_Page",
+    "build": "vite build --base=/ArticuChic_Page",
     "lint": "eslint .",
     "preview": "vite preview"
   },
