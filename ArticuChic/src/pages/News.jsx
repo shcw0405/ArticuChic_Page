@@ -10,29 +10,35 @@ import {
   Divider,
   Chip,
 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 const News = () => {
+  const navigate = useNavigate();
   const [news] = useState([
     {
       id: 1,
-      title: "ArticuChic Project Officially Launched",
-      date: "January 15, 2023",
+      title: "Our Official Website is Now Live!",
+      date: "March 13, 2025",
       summary:
-        "After multiple rounds of discussions and preparations, the ArticuChic project has officially kicked off today. This innovative initiative aims to create a platform that seamlessly integrates art and technology, offering users a unique and inspiring experience.",
-      image: "/src/assets/pjn.jpg",
-      category: "Project Updates",
+        "We're thrilled to announce that our official website has gone live. Discover more about ArticuChic and stay connected with our latest updates.",
+      image: new URL("../assets/page.png", import.meta.url).href,
+      category: "Key Milestones",
     },
     {
       id: 2,
-      title: "Design Phase Completed, Moving into Development",
-      date: "February 28, 2023",
+      title: "ArticuChic Project Officially Launched",
+      date: "March 5, 2025",
       summary:
-        "After over a month of dedicated effort, the design phase of the ArticuChic project has been successfully completed. The team is now transitioning into the development phase, which is expected to last for approximately three months.",
-      image: "/src/assets/pjn.jpg",
-      category: "latest progress",
+        "Congratulations! The ArticuChic Team is Officially Formed! We will focus on product development, and we look forward to sharing the exciting outcomes from our team in the near future. Stay tuned!",
+      image: new URL("../assets/OIP.jpg", import.meta.url).href,
+      category: "Key Milestone",
     },
   ]);
+
+  const handleNewsClick = (newsId) => {
+    navigate(`/news/${newsId}`);
+  };
 
   return (
     <Container maxWidth="lg">
@@ -57,7 +63,7 @@ const News = () => {
       {/* 置顶新闻 */}
       <Box mb={6}>
         <Card>
-          <CardActionArea>
+          <CardActionArea onClick={() => handleNewsClick(news[0].id)}>
             <CardMedia
               component="img"
               height="400"
@@ -94,7 +100,7 @@ const News = () => {
             <Card
               sx={{ height: "100%", display: "flex", flexDirection: "column" }}
             >
-              <CardActionArea>
+              <CardActionArea onClick={() => handleNewsClick(item.id)}>
                 <CardMedia
                   component="img"
                   height="200"
