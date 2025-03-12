@@ -20,7 +20,7 @@ const Members = () => {
       name: "蔡旭",
       role: "Leader",
       bio: "Life's a struggle, but love can.",
-      avatar: "/src/assets/head.jpg",
+      avatar: new URL("../assets/head.jpg", import.meta.url).href,
       social: {
         github: "https://github.com/shcw0405",
         linkedin: "",
@@ -32,7 +32,7 @@ const Members = () => {
       name: "吴博睿",
       role: "Undefined",
       bio: "在读学生，主修计算机科学，热衷于学习编程和软件开发。",
-      avatar: "/src/assets/vio.jpg",
+      avatar: new URL("../assets/vio.jpg", import.meta.url).href,
       social: {
         github: "https://github.com/Violesa",
         linkedin: "",
@@ -44,7 +44,7 @@ const Members = () => {
       name: "朱元武",
       role: "Undefined",
       bio: "something for nothing",
-      avatar: "/src/assets/zhu.jpg",
+      avatar: new URL("../assets/zhu.jpg", import.meta.url).href,
       social: {
         github: "https://github.com/zzyuanyi",
         linkedin: "",
@@ -56,7 +56,7 @@ const Members = () => {
       name: "杨功渤",
       role: "Undefined",
       bio: "I hava 3 years of programming experience, and uses C# C++ language. I hava been involved in Unity projects. I am better at project framework design",
-      avatar: "/src/assets/yang.jpg",
+      avatar: new URL("../assets/yang.jpg", import.meta.url).href,
       social: {
         github: "",
         linkedin: "",
