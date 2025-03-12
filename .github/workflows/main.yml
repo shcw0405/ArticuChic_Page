@@ -17,6 +17,7 @@ jobs:
         run: |
           npm ci --legacy-peer-deps
           cd ArticuChic
+          npm ci --legacy-peer-deps
           npm run build
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
