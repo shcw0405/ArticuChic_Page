@@ -24,16 +24,3 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: ArticuChic/dist # The folder the action should deploy.
-          
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-        
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          # Upload entire repository
-          branch: gh-pages
-          path: './dist'
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
