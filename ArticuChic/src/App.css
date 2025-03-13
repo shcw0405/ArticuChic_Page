@@ -42,13 +42,6 @@
   color: #888;
 }
 
-/* 查找可能限制宽度的CSS选择器 */
-.app-container,
-#root > div,
-.container {
-  /* 检查是否有max-width属性 */
-}
-
 /* 可以添加覆盖样式 */
 .MuiContainer-root {
   max-width: 100% !important;
