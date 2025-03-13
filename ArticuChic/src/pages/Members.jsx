@@ -47,7 +47,7 @@ const Members = () => {
       email: "1026343326@qq.com",
       school: {
         name: "",
-        logo: new URL("../assets/jilin.png", import.meta.url).href,
+        logo: new URL("../assets/Jilin.png", import.meta.url).href,
       },
     },
     {
@@ -62,7 +62,7 @@ const Members = () => {
       email: "violesa12138@gmail.com",
       school: {
         name: "",
-        logo: new URL("../assets/jilin.png", import.meta.url).href,
+        logo: new URL("../assets/Jilin.png", import.meta.url).href,
       },
     },
     {
@@ -79,7 +79,7 @@ const Members = () => {
       email: "2649157045@qq.com",
       school: {
         name: "",
-        logo: new URL("../assets/jilin.png", import.meta.url).href,
+        logo: new URL("../assets/Jilin.png", import.meta.url).href,
       },
     },
     {
@@ -96,7 +96,7 @@ const Members = () => {
       email: "2735567415@qq.com",
       school: {
         name: "",
-        logo: new URL("../assets/jilin.png", import.meta.url).href,
+        logo: new URL("../assets/Jilin.png", import.meta.url).href,
       },
     },
   ];
