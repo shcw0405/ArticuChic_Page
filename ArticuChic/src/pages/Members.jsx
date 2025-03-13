@@ -12,6 +12,26 @@ import {
   IconButton,
 } from "@mui/material";
 import { GitHub, LinkedIn, Twitter } from "@mui/icons-material";
+import { styled } from "@mui/material/styles";
+
+// 修改 SchoolLogo 样式组件
+const SchoolLogo = styled("img")({
+  width: "24px",
+  height: "24px",
+  objectFit: "contain",
+  display: "block", // 确保图片正确对齐
+});
+
+const SchoolInfo = styled("div")({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "8px",
+  marginTop: "8px",
+  "& span": {
+    fontSize: "0.875rem",
+  },
+});
 
 const Members = () => {
   const teamMembers = [
@@ -23,8 +43,11 @@ const Members = () => {
       avatar: new URL("../assets/head.jpg", import.meta.url).href,
       social: {
         github: "https://github.com/shcw0405",
-        linkedin: "",
-        twitter: "",
+      },
+      email: "1026343326@qq.com",
+      school: {
+        name: "",
+        logo: new URL("../assets/jilin.png", import.meta.url).href,
       },
     },
     {
@@ -35,8 +58,11 @@ const Members = () => {
       avatar: new URL("../assets/vio.jpg", import.meta.url).href,
       social: {
         github: "https://github.com/Violesa",
-        linkedin: "",
-        twitter: "violesa12138@gmail.com",
+      },
+      email: "violesa12138@gmail.com",
+      school: {
+        name: "",
+        logo: new URL("../assets/jilin.png", import.meta.url).href,
       },
     },
     {
@@ -50,6 +76,11 @@ const Members = () => {
         linkedin: "",
         twitter: "2649157045@qq.com",
       },
+      email: "2649157045@qq.com",
+      school: {
+        name: "",
+        logo: new URL("../assets/jilin.png", import.meta.url).href,
+      },
     },
     {
       id: 4,
@@ -61,6 +92,11 @@ const Members = () => {
         github: "",
         linkedin: "",
         twitter: "2735567415@qq.com",
+      },
+      email: "2735567415@qq.com",
+      school: {
+        name: "",
+        logo: new URL("../assets/jilin.png", import.meta.url).href,
       },
     },
   ];
@@ -90,7 +126,7 @@ const Members = () => {
           The ArticuChic team is composed of passionate and creative
           professionals, each bringing extensive experience and expertise in
           their respective fields. We believe that a diverse team background and
-          close collaboration are key to the project’s success. Together, our
+          close collaboration are key to the project's success. Together, our
           team is committed to making ArticuChic a benchmark product within the
           industry.{" "}
         </Typography>
@@ -143,6 +179,9 @@ const Members = () => {
                   justifyContent="center"
                   mt={2}
                 >
+                  <IconButton>
+                    <SchoolLogo src={member.school.logo} alt="school logo" />
+                  </IconButton>
                   <IconButton
                     aria-label="github"
                     href={member.social.github}
@@ -151,18 +190,10 @@ const Members = () => {
                     <GitHub />
                   </IconButton>
                   <IconButton
-                    aria-label="linkedin"
-                    href={member.social.linkedin}
-                    target="_blank"
+                    aria-label="email"
+                    href={`mailto:${member.email}`}
                   >
-                    <LinkedIn />
-                  </IconButton>
-                  <IconButton
-                    aria-label="twitter"
-                    href={member.social.twitter}
-                    target="_blank"
-                  >
-                    <Twitter />
+                    <i className="fas fa-envelope"></i>
                   </IconButton>
                 </Stack>
               </CardContent>

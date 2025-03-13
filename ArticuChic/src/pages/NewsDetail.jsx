@@ -16,9 +16,7 @@ const NewsDetail = () => {
   const navigate = useNavigate();
   const [newsItem, setNewsItem] = useState(null);
 
-  // 模拟新闻数据
   useEffect(() => {
-    // 模拟新闻数据
     const newsData = {
       1: {
         title: "Our Official Website is Now Live!",
