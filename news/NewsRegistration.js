@@ -22,6 +22,7 @@
 
 import cxNews1 from "./cxNews1";
 import cxNews2 from "./cxNews2";
+import cxNews3 from "./cxNews3";
 import NewsTemplate from "./NewsTemplate";
 
 // 注册所有新闻组件
@@ -54,7 +55,18 @@ const newsRegistry = {
       author: "Project Management Team",
     },
   },
-
+  3: {
+    component: cxNews3,
+    info: {
+      id: "3",
+      title: "蔡旭's Work from 3.11 to 3.16",
+      date: "2025-03-16", // 确保使用标准日期格式：YYYY-MM-DD
+      summary: "这周我做了三个任务",
+      image: new URL("../ArticuChic/assets/head.jpg", import.meta.url).href,
+      category: "Weekly Work",
+      author: "蔡旭",
+    },
+  },
   // 在这里注册更多新闻...
   // "your-news-id": { ... }
 

@@ -98,7 +98,7 @@ const News = () => {
                     {item.summary}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    作者: {item.author}
+                    Author: {item.author}
                   </Typography>
                 </CardContent>
               </CardActionArea>
