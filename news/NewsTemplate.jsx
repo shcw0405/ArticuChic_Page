@@ -24,7 +24,7 @@ const NewsTemplate = () => {
   const downloads = [
     {
       name: "example.pdf",
-      url: new URL("../ArticuChic/assets/test.pdf", import.meta.url).href,
+      url: new URL("../ArticuChic/assets/FRE.pdf", import.meta.url).href,
       description: "description",
     },
   ];
