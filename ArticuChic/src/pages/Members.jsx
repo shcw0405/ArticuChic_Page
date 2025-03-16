@@ -40,27 +40,27 @@ const Members = () => {
       name: "蔡旭",
       role: "Leader",
       bio: "Life's a struggle, but love can.",
-      avatar: new URL("../assets/head.jpg", import.meta.url).href,
+      avatar: new URL("../../assets/head.jpg", import.meta.url).href,
       social: {
         github: "https://github.com/shcw0405",
       },
       email: "1026343326@qq.com",
       school: {
-        logo: new URL("../assets/Jilin.png", import.meta.url).href,
+        logo: new URL("../../assets/Jilin.png", import.meta.url).href,
       },
     },
     {
       id: 2,
       name: "吴博睿",
       role: "Undefined",
-      bio: "在读学生，主修计算机科学，热衷于学习编程和软件开发。",
-      avatar: new URL("../assets/vio.jpg", import.meta.url).href,
+      bio: "Current Student, Majoring in Computer Science, Passionate About Learning Programming and Software Development.",
+      avatar: new URL("../../assets/vio.jpg", import.meta.url).href,
       social: {
         github: "https://github.com/Violesa",
       },
       email: "violesa12138@gmail.com",
       school: {
-        logo: new URL("../assets/Jilin.png", import.meta.url).href,
+        logo: new URL("../../assets/Jilin.png", import.meta.url).href,
       },
     },
     {
@@ -68,7 +68,7 @@ const Members = () => {
       name: "朱元武",
       role: "Undefined",
       bio: "something for nothing",
-      avatar: new URL("../assets/zhu.jpg", import.meta.url).href,
+      avatar: new URL("../../assets/zhu.jpg", import.meta.url).href,
       social: {
         github: "https://github.com/zzyuanyi",
         linkedin: "",
@@ -76,7 +76,7 @@ const Members = () => {
       },
       email: "2649157045@qq.com",
       school: {
-        logo: new URL("../assets/Jilin.png", import.meta.url).href,
+        logo: new URL("../../assets/Jilin.png", import.meta.url).href,
       },
     },
     {
@@ -84,7 +84,7 @@ const Members = () => {
       name: "杨功渤",
       role: "Undefined",
       bio: "I hava 3 years of programming experience, and uses C# C++ language. I hava been involved in Unity projects. I am better at project framework design",
-      avatar: new URL("../assets/yang.jpg", import.meta.url).href,
+      avatar: new URL("../../assets/yang.jpg", import.meta.url).href,
       social: {
         github: "",
         linkedin: "",
@@ -92,7 +92,7 @@ const Members = () => {
       },
       email: "2735567415@qq.com",
       school: {
-        logo: new URL("../assets/Jilin.png", import.meta.url).href,
+        logo: new URL("../../assets/Jilin.png", import.meta.url).href,
       },
     },
   ];

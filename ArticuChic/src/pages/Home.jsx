@@ -103,7 +103,7 @@ const Home = () => {
       title: "Innovative Design",
       description:
         "ArticuChic integrates cutting-edge design concepts, seamlessly blending art and functionality to deliver a unique user experience.",
-      image: new URL("../assets/pjn.jpg", import.meta.url).href,
+      image: new URL("../../assets/pjn.jpg", import.meta.url).href,
     },
   ];
 

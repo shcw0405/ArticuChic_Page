@@ -11,30 +11,35 @@ import {
   Chip,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import newsRegistry from "../../../news/NewsRegistration";
 
 const News = () => {
   const navigate = useNavigate();
-  const [news] = useState([
-    {
-      id: 1,
-      title: "Our Official Website is Now Live!",
-      date: "March 13, 2025",
-      summary:
-        "We're thrilled to announce that our official website has gone live. Discover more about ArticuChic and stay connected with our latest updates.",
-      image: new URL("../assets/page.png", import.meta.url).href,
-      category: "Key Milestones",
-    },
-    {
-      id: 2,
-      title: "ArticuChic Project Officially Launched",
-      date: "March 5, 2025",
-      summary:
-        "Congratulations! The ArticuChic Team is Officially Formed! We will focus on product development, and we look forward to sharing the exciting outcomes from our team in the near future. Stay tuned!",
-      image: new URL("../assets/OIP.jpg", import.meta.url).href,
-      category: "Key Milestone",
-    },
-  ]);
+  // 从注册表中提取新闻信息并按日期倒序排序
+  const [newsItems] = useState(() => {
+    // 获取所有新闻信息
+    const items = Object.values(newsRegistry).map((item) => item.info);
+
+    // 尝试按日期倒序排序（最新的排在前面）
+    // 首先尝试将日期转换为统一格式进行比较
+    return items.sort((a, b) => {
+      try {
+        // 尝试解析日期，如果是标准格式（如 2024-03-15）或常见格式
+        const dateA = new Date(a.date);
+        const dateB = new Date(b.date);
+
+        // 检查日期是否有效，如果无效则按原顺序保留
+        if (isNaN(dateA) || isNaN(dateB)) return 0;
+
+        // 按日期倒序（最新的在前）
+        return dateB - dateA;
+      } catch (e) {
+        // 如果日期比较出错，保持原顺序
+        return 0;
+      }
+    });
+  });
 
   const handleNewsClick = (newsId) => {
     navigate(`/news/${newsId}`);
@@ -60,42 +65,9 @@ const News = () => {
         <Divider sx={{ mb: 4 }} />
       </Box>
 
-      {/* 置顶新闻 */}
-      <Box mb={6}>
-        <Card>
-          <CardActionArea onClick={() => handleNewsClick(news[0].id)}>
-            <CardMedia
-              component="img"
-              height="400"
-              image={news[0].image}
-              alt={news[0].title}
-            />
-            <CardContent>
-              <Box
-                display="flex"
-                justifyContent="space-between"
-                alignItems="center"
-                mb={1}
-              >
-                <Chip label={news[0].category} color="primary" size="small" />
-                <Typography variant="body2" color="text.secondary">
-                  {news[0].date}
-                </Typography>
-              </Box>
-              <Typography gutterBottom variant="h4" component="h2">
-                {news[0].title}
-              </Typography>
-              <Typography variant="body1" color="text.secondary">
-                {news[0].summary}
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-        </Card>
-      </Box>
-
-      {/* 新闻列表 */}
+      {/* 新闻列表 - 所有新闻统一样式，倒序展示（最新的在前面） */}
       <Grid container spacing={4}>
-        {news.slice(1).map((item) => (
+        {newsItems.map((item) => (
           <Grid item xs={12} md={6} key={item.id}>
             <Card
               sx={{ height: "100%", display: "flex", flexDirection: "column" }}
@@ -122,7 +94,12 @@ const News = () => {
                   <Typography gutterBottom variant="h5" component="h2">
                     {item.title}
                   </Typography>
-                  <Typography variant="body2">{item.summary}</Typography>
+                  <Typography variant="body2" paragraph>
+                    {item.summary}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    作者: {item.author}
+                  </Typography>
                 </CardContent>
               </CardActionArea>
             </Card>
