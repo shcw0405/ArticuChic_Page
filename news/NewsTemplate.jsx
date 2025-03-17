@@ -11,8 +11,6 @@ import React from "react";
  *    - content: 新闻内容
  *    - images: 图片数组（可选）
  *    - downloads: 下载文件数组（可选）
- * 3. 图片请放在 src/assets/news/ 目录下
- * 4. 下载文件请放在 public/downloads/ 目录下
  */
 
 const NewsTemplate = () => {
