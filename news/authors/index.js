@@ -10,6 +10,5 @@ export { default as cx } from "./cx/index"; // 蔡旭的新闻
 export { default as ygb } from "./ygb/index"; // 杨功渤的新闻
 export { default as zyw } from "./zyw/index"; // 朱元武的新闻
 export { default as wbr } from "./wbr/index"; // 吴博睿的新闻
-
 // 添加更多作者
 // export { default as 作者id } from './作者id/index';
