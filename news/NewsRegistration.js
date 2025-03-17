@@ -23,6 +23,7 @@
 import cxNews1 from "./cxNews1";
 import cxNews2 from "./cxNews2";
 import cxNews3 from "./cxNews3";
+import zywNews1 from "./zywNews1";
 import NewsTemplate from "./NewsTemplate";
 
 // 注册所有新闻组件
@@ -67,6 +68,18 @@ const newsRegistry = {
       author: "蔡旭",
     },
   },
+  11:{
+    component:zywNews1,
+    info:{
+      id:"11",
+      title:"zyw's work form 3.11 to 3.17",
+      date:"2025-03-17",
+      summary:"我这周做的任务",
+      image: new URL("../ArticuChic/assets/zhu.jpg", import.meta.url).href,
+      category:"Weekly Work",
+      author:"朱元武",
+    }
+  }
   // 在这里注册更多新闻...
   // "your-news-id": { ... }
 
