@@ -1,6 +1,3 @@
-
-
-
 import WuBoRui_report_week2 from "./WuBoRui_report_week2";
 
 // 管理员的所有新闻条目
