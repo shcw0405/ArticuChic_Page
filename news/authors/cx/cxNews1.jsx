@@ -9,15 +9,14 @@ import React from "react";
  *    - date: 发布日期
  *    - author: 作者
  *    - content: 新闻内容
- *    - images: 图片数组（可选）
+ *    - images: 图片（可选）
  *    - downloads: 下载文件数组（可选）
- * 3. 图片请放在 src/assets/news/ 目录下
- * 4. 下载文件请放在 public/downloads/ 目录下
+ * 3. 图片和下载文件请放在 ArticuChic/assets/ 目录下
  */
 
 const NewsTemplate = () => {
-  const title = "Our Official Website is Now Live!";
-  const date = "2024-03-13";
+  const title = "ArticuChic Project Officially Launched";
+  const date = "2024-03-05";
   const author = "蔡旭";
 
   const downloads = [];
@@ -33,14 +32,17 @@ const NewsTemplate = () => {
       <div className="news-content">
         {/* Write News here */}
         <p>
-          We're thrilled to announce that our official website has gone live.
-          Discover more about ArticuChic and stay connected with our latest
-          updates.
+          Congratulations! The ArticuChic Team is Officially Formed! We will
+          focus on product development, and we look forward to sharing the
+          exciting outcomes from our team in the near future. Stay tuned!
         </p>
 
         <div className="news-image">
           <img
-            src={new URL("../ArticuChic/assets/page.png", import.meta.url).href}
+            src={
+              new URL("../../../ArticuChic/assets/OIP.jpg", import.meta.url)
+                .href
+            }
             alt="Project Launch"
           />
           <p className="image-caption"></p>

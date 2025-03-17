@@ -44,8 +44,10 @@ const NewsTemplate = () => {
         <div className="news-image">
           <img
             src={
-              new URL("../ArticuChic/assets/cx/readme.png", import.meta.url)
-                .href
+              new URL(
+                "../../../ArticuChic/assets/cx/readme.png",
+                import.meta.url
+              ).href
             }
             alt="Project Launch"
           />
@@ -59,7 +61,8 @@ const NewsTemplate = () => {
         <div className="news-image">
           <img
             src={
-              new URL("../ArticuChic/assets/cx/dia.png", import.meta.url).href
+              new URL("../../../ArticuChic/assets/cx/dia.png", import.meta.url)
+                .href
             }
             alt="Project Launch"
           />
@@ -74,7 +77,10 @@ const NewsTemplate = () => {
         <div className="news-image">
           <img
             src={
-              new URL("../ArticuChic/assets/cx/login.png", import.meta.url).href
+              new URL(
+                "../../../ArticuChic/assets/cx/login.png",
+                import.meta.url
+              ).href
             }
             alt="Project Launch"
           />
@@ -83,7 +89,8 @@ const NewsTemplate = () => {
         <div className="news-image">
           <img
             src={
-              new URL("../ArticuChic/assets/cx/spe.png", import.meta.url).href
+              new URL("../../../ArticuChic/assets/cx/spe.png", import.meta.url)
+                .href
             }
             alt="Project Launch"
           />
