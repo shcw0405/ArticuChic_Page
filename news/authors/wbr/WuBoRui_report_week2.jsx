@@ -23,7 +23,7 @@ const NewsTemplate = () => {
   const downloads = [
     {
       name: "request_analysis.xlsx",
-      url: new URL("../ArticuChic/public/request_analysis.xlsx", import.meta.url).href,
+      url: new URL("../ArticuChic/public/wbr/request_analysis.xlsx", import.meta.url).href,
       description: "this is the analysis of the whole project",
     },
   ];
