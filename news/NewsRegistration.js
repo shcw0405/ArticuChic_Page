@@ -23,6 +23,9 @@
 import cxNews1 from "./cxNews1";
 import cxNews2 from "./cxNews2";
 import cxNews3 from "./cxNews3";
+
+import wbrNews1 from "./WuBoRui_report_week2";
+
 import NewsTemplate from "./NewsTemplate";
 
 // 注册所有新闻组件
@@ -65,6 +68,18 @@ const newsRegistry = {
       image: new URL("../ArticuChic/assets/head.jpg", import.meta.url).href,
       category: "Weekly Work",
       author: "蔡旭",
+    },
+  },
+  4: {
+    component: wbrNews1,
+    info: {
+      id: "4",
+      title: "BoRui's work in the second week",
+      date: "2025-03-17", // 确保使用标准日期格式：YYYY-MM-DD
+      summary: "I complished the request analysis this week",
+      image: new URL("../ArticuChic/assets/vio.jpg", import.meta.url).href,
+      category: "Weekly Work",
+      author: "Wu BoRui",
     },
   },
   // 在这里注册更多新闻...
