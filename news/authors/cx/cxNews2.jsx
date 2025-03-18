@@ -11,20 +11,16 @@ import React from "react";
  *    - content: 新闻内容
  *    - images: 图片数组（可选）
  *    - downloads: 下载文件数组（可选）
+ * 3. 图片请放在 src/assets/news/ 目录下
+ * 4. 下载文件请放在 public/downloads/ 目录下
  */
 
 const NewsTemplate = () => {
-  const title = "News Title";
-  const date = "2024-03-15";
-  const author = "Author Name";
+  const title = "Our Official Website is Now Live!";
+  const date = "2024-03-13";
+  const author = "蔡旭";
 
-  const downloads = [
-    {
-      name: "example.pdf",
-      url: new URL("../ArticuChic/assets/FRE.pdf", import.meta.url).href,
-      description: "description",
-    },
-  ];
+  const downloads = [];
 
   return (
     <div className="news-container">
@@ -36,18 +32,21 @@ const NewsTemplate = () => {
 
       <div className="news-content">
         {/* Write News here */}
-        <p>Content of News...</p>
+        <p>
+          We're thrilled to announce that our official website has gone live.
+          Discover more about ArticuChic and stay connected with our latest
+          updates.
+        </p>
 
         <div className="news-image">
           <img
-            src={new URL("../ArticuChic/assets/test.jpg", import.meta.url).href}
+            src={
+              new URL("../../../ArticuChic/assets/page.png", import.meta.url)
+                .href
+            }
             alt="Project Launch"
           />
-          <p className="image-caption">
-            If you need to include images, please upload the image files to the
-            ArticuChic/assets directory and insert them into the content
-            following the specified format.
-          </p>
+          <p className="image-caption"></p>
         </div>
 
         {/* File List for Download */}

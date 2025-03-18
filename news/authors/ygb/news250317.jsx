@@ -23,10 +23,10 @@ const NewsTemplate = () => {
   const downloads = [
     {
       name: "example.pdf",
-      url: new URL("../ArticuChic/assets/FRE.pdf", import.meta.url).href,
+      url: new URL("../../../ArticuChic/assets/FRE.pdf", import.meta.url).href,
       description: "description",
     },
-    ];
+  ];
 
   const content = [
      { type: "text", value: "First, I constructed the possible architecture of the entire system." },
@@ -40,38 +40,57 @@ const NewsTemplate = () => {
       { type: "text", value: "Here is the use case split from the above architecture." },
     {
       type: "image",
-        url: new URL("../ArticuChic/assets/yang/用例1.png", import.meta.url).href,
+      url: new URL("../ArticuChic/assets/yang/design1.png", import.meta.url)
+        .href,
+      alt: "Image 1",
+      caption: "Caption for Image 1",
+    },
+
+    {
+      type: "text",
+      value: "Here is the use case split from the above architecture.",
+    },
+    {
+      type: "image",
+      url: new URL("../../../ArticuChic/assets/yang/用例1.png", import.meta.url)
+        .href,
       alt: "Image 2",
       caption: "Caption for Image 2",
-      },
+    },
 
-
-      { type: "text", value: "Here is the publishing UI I made, and the rest is done by the team leader." },
-      {
-          type: "image",
-          url: new URL("../ArticuChic/assets/yang/UI1.png", import.meta.url).href,
-          alt: "Image 3",
-          caption: "Caption for Image 3",
-      },
-      {
-          type: "image",
-          url: new URL("../ArticuChic/assets/yang/UI2.png", import.meta.url).href,
-          alt: "Image 4",
-          caption: "Caption for Image 4",
-      },
-      {
-          type: "image",
-          url: new URL("../ArticuChic/assets/yang/UI3.png", import.meta.url).href,
-          alt: "Image 5",
-          caption: "Caption for Image 5",
-      },
-      {
-          type: "image",
-          url: new URL("../ArticuChic/assets/yang/UI4.png", import.meta.url).href,
-          alt: "Image 6",
-          caption: "Caption for Image 6",
-      },
-
+    {
+      type: "text",
+      value:
+        "Here is the publishing UI I made, and the rest is done by the team leader.",
+    },
+    {
+      type: "image",
+      url: new URL("../../../ArticuChic/assets/yang/UI1.png", import.meta.url)
+        .href,
+      alt: "Image 3",
+      caption: "Caption for Image 3",
+    },
+    {
+      type: "image",
+      url: new URL("../../../ArticuChic/assets/yang/UI2.png", import.meta.url)
+        .href,
+      alt: "Image 4",
+      caption: "Caption for Image 4",
+    },
+    {
+      type: "image",
+      url: new URL("../../../ArticuChic/assets/yang/UI3.png", import.meta.url)
+        .href,
+      alt: "Image 5",
+      caption: "Caption for Image 5",
+    },
+    {
+      type: "image",
+      url: new URL("../../../ArticuChic/assets/yang/UI4.png", import.meta.url)
+        .href,
+      alt: "Image 6",
+      caption: "Caption for Image 6",
+    },
   ];
 
   return (
@@ -82,9 +101,6 @@ const NewsTemplate = () => {
         <span>Author: {author}</span>
       </div>
 
-
-
-
       <div className="news-content">
         {/* 动态渲染文本和图片 */}
         {content.map((item, index) => {
@@ -94,13 +110,14 @@ const NewsTemplate = () => {
             return (
               <div key={index} className="news-image">
                 <img src={item.url} alt={item.alt} />
-                {item.caption && <p className="image-caption">{item.caption}</p>}
+                {item.caption && (
+                  <p className="image-caption">{item.caption}</p>
+                )}
               </div>
             );
           }
           return null;
         })}
-
 
         {/* File List for Download */}
         {downloads.length > 0 && (
