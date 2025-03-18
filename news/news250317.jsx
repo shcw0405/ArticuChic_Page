@@ -16,7 +16,7 @@ import React from "react";
  */
 
 const NewsTemplate = () => {
-  const title = "Use cas and some of UI";
+  const title = "Use case and some of UI";
   const date = "2025-03-17";
   const author = "杨功渤";
 
@@ -32,7 +32,7 @@ const NewsTemplate = () => {
      { type: "text", value: "First, I constructed the possible architecture of the entire system." },
       {
       type: "image",
-      url: new URL("../ArticuChic/assets/yang/可能的架构.png", import.meta.url).href,
+      url: new URL("..ArticuChic_Page/ArticuChic/assets/yang/design1.png", import.meta.url).href,
       alt: "Image 1",
       caption: "Caption for Image 1",
       },
@@ -104,7 +104,7 @@ const NewsTemplate = () => {
 
         {/* File List for Download */}
         {downloads.length > 0 && (
-          <div className="downloads-section">
+          <div className="">
             <h3>Related Files Download</h3>
             <ul>
               {downloads.map((file, index) => (
