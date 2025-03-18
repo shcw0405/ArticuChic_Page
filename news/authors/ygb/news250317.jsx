@@ -33,6 +33,7 @@ const NewsTemplate = () => {
       {
       type: "image",
       url: new URL("../../../ArticuChic/assets/yang/design1.png", import.meta.url).href,
+
       alt: "Image 1",
       caption: "Caption for Image 1",
       },
