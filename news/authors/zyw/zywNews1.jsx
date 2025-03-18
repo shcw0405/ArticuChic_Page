@@ -23,7 +23,7 @@ const NewsTemplate = () => {
   const downloads = [
     {
       name: "Division of responsibilities.docx",
-      url: new URL("../ArticuChic/assets/zyw/Division of responsibilities.docx", import.meta.url).href,
+      url: new URL("../../../ArticuChic/assets/zyw/Division of responsibilities.docx", import.meta.url).href,
       description: "Content as described in the name ",
     },
   ];
