@@ -36,10 +36,8 @@ const NewsTemplate = () => {
     },
     {
       type: "image",
-      url: new URL(
-        "../../../ArticuChic/assets/yang/可能的框架.png",
-        import.meta.url
-      ).href,
+      url: new URL("../ArticuChic/assets/yang/可能的架构.png", import.meta.url)
+        .href,
       alt: "Image 1",
       caption: "Caption for Image 1",
     },
