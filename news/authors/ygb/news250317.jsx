@@ -22,7 +22,7 @@ const NewsTemplate = () => {
 
   const downloads = [
     {
-      name: "example.pdf",
+      name: "",
       url: new URL("../../../ArticuChic/assets/FRE.pdf", import.meta.url).href,
       description: "description",
     },
@@ -32,19 +32,10 @@ const NewsTemplate = () => {
      { type: "text", value: "First, I constructed the possible architecture of the entire system." },
       {
       type: "image",
-      url: new URL("..ArticuChic_Page/ArticuChic/assets/yang/design1.png", import.meta.url).href,
+      url: new URL("../../../ArticuChic/assets/yang/design1.png", import.meta.url).href,
       alt: "Image 1",
       caption: "Caption for Image 1",
       },
-
-      { type: "text", value: "Here is the use case split from the above architecture." },
-    {
-      type: "image",
-      url: new URL("../ArticuChic/assets/yang/design1.png", import.meta.url)
-        .href,
-      alt: "Image 1",
-      caption: "Caption for Image 1",
-    },
 
     {
       type: "text",
