@@ -32,6 +32,7 @@ news/
    - 在该文件夹下创建 `index.js` 文件，参考其他作者的格式
 
 2. **注册作者**
+
    - 在 `news/authors/index.js` 中添加新作者：
      ```javascript
      export { default as yourname } from "./yourname/index"; // 您的名字的新闻
@@ -47,6 +48,7 @@ news/
    - 将下载文件放在 `public/downloads/` 目录下
 
 2. **编辑新闻内容**
+
    - 打开新创建的新闻文件
    - 修改以下基本信息：
      ```javascript
@@ -100,6 +102,7 @@ news/
      ```
 
 3. **注册新闻**
+
    - 在 `yournameNews` 对象中添加新条目：
      ```javascript
      "unique-news-id": {
@@ -150,6 +153,7 @@ news/
   ```
 
 - **Assets 目录中的文件**：
+
   ```javascript
   url: new URL(
     "../../../ArticuChic/src/assets/docs/example.pdf",
@@ -185,6 +189,7 @@ news/
    - 确保日期是有效的，无效日期可能导致排序问题
 
 5. **添加新作者后系统报错**
+
    - 确保按正确的层级创建了文件夹和索引文件
    - 确保在作者主索引中注册了新作者
 

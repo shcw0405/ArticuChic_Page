@@ -42,7 +42,7 @@ const NewsTemplate = () => {
 
         <div className="news-image">
           <img
-            src={new URL("../ArticuChic/assets/test.jpg", import.meta.url).href}
+            src={new URL("../../../ArticuChic/assets/test.jpg", import.meta.url).href}
             alt="Project Launch"
           />
           <p className="image-caption">
