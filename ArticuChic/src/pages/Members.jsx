@@ -10,8 +10,9 @@ import {
   Avatar,
   Stack,
   IconButton,
+  Button,
 } from "@mui/material";
-import { GitHub, LinkedIn, Twitter } from "@mui/icons-material";
+import { GitHub, LinkedIn, Twitter, Description } from "@mui/icons-material";
 import { styled } from "@mui/material/styles";
 
 // 修改 SchoolLogo 样式组件
@@ -38,7 +39,7 @@ const Members = () => {
     {
       id: 1,
       name: "蔡旭",
-      role: "Leader",
+      role: "P.M./Tester",
       bio: "Life's a struggle, but love can.",
       avatar: new URL("../../assets/head.jpg", import.meta.url).href,
       social: {
@@ -52,7 +53,7 @@ const Members = () => {
     {
       id: 2,
       name: "吴博睿",
-      role: "Undefined",
+      role: "Programmer",
       bio: "Current Student, Majoring in Computer Science, Passionate About Learning Programming and Software Development.",
       avatar: new URL("../../assets/vio.jpg", import.meta.url).href,
       social: {
@@ -62,11 +63,13 @@ const Members = () => {
       school: {
         logo: new URL("../../assets/Jilin.png", import.meta.url).href,
       },
+      cv: new URL("../../assets/personal_cv/wuborui_CV.docx", import.meta.url)
+        .href,
     },
     {
       id: 3,
       name: "朱元武",
-      role: "Undefined",
+      role: "R.A./Developer",
       bio: "something for nothing",
       avatar: new URL("../../assets/zhu.jpg", import.meta.url).href,
       social: {
@@ -78,11 +81,13 @@ const Members = () => {
       school: {
         logo: new URL("../../assets/Jilin.png", import.meta.url).href,
       },
+      cv: new URL("../../assets/personal_cv/YuanwuZhu(1).docx", import.meta.url)
+        .href,
     },
     {
       id: 4,
       name: "杨功渤",
-      role: "Undefined",
+      role: "S.A./Developer",
       bio: "I hava 3 years of programming experience, and uses C# C++ language. I hava been involved in Unity projects. I am better at project framework design",
       avatar: new URL("../../assets/yang.jpg", import.meta.url).href,
       social: {
@@ -94,6 +99,10 @@ const Members = () => {
       school: {
         logo: new URL("../../assets/Jilin.png", import.meta.url).href,
       },
+      cv: new URL(
+        "../../assets/personal_cv/GongboYang(1).docx",
+        import.meta.url
+      ).href,
     },
   ];
 
@@ -169,6 +178,25 @@ const Members = () => {
                 <Typography variant="body2" paragraph>
                   {member.bio}
                 </Typography>
+
+                {/* CV下载按钮 */}
+                {member.cv && (
+                  <Box
+                    sx={{ display: "flex", justifyContent: "center", mb: 2 }}
+                  >
+                    <Button
+                      variant="outlined"
+                      color="primary"
+                      startIcon={<Description />}
+                      href={member.cv}
+                      download
+                      sx={{ borderRadius: 2 }}
+                    >
+                      Download CV
+                    </Button>
+                  </Box>
+                )}
+
                 <Stack
                   direction="row"
                   spacing={1}
