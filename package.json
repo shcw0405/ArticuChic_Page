@@ -5,6 +5,7 @@
   },
   "dependencies": {
     "frappe-gantt-react": "^0.2.2",
+    "react": "^19.0.0",
     "react-gantt": "^2.1.8"
   }
 }
