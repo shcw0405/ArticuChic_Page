@@ -37,7 +37,7 @@ const Docs = () => {
       content: [
         { title: "Project Introduction", link: "#intro" },
         { title: "Core Features", link: "#features" },
-        { title: "Technical Architecture", link: "#architecture" },
+        { title: "Technical Architecture", link:"../../assets/zyw/SDS.html"},
         { title: "Development Plan", link: "#roadmap" },
       ],
     },
@@ -67,6 +67,7 @@ const Docs = () => {
 
   const downloadableFiles = [
     { name: "Nothing.pdf", size: "0MB", date: "2025-03-15" },
+    {name:"SDS.md",size:"8KB",date:"2025-03-23",link:"../../assets/zyw/SDS.md"},
   ];
 
   return (
@@ -122,7 +123,7 @@ const Docs = () => {
                   key={index}
                   button
                   component={Link}
-                  href="#"
+                  href={file.link}
                   underline="none"
                 >
                   <ListItemText
@@ -145,7 +146,13 @@ const Docs = () => {
 
             <List>
               {docCategories[tabValue].content.map((item, index) => (
-                <ListItem key={index} sx={{ pl: 0 }}>
+                <ListItem key={index} 
+                button 
+                component="a"
+                href={item.link}
+                target={item.link.startsWith("#") ? undefined : "_blank"}
+                rel="noopener noreferrer"
+                sx={{ pl: 0 }}>
                   <ListItemIcon sx={{ minWidth: 36 }}>
                     <ArrowRight color="primary" />
                   </ListItemIcon>
