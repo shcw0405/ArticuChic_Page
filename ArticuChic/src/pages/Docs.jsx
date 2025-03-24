@@ -68,7 +68,7 @@ const Docs = () => {
   const downloadableFiles = [
     {
       name: "SDS.md",
-      size: "8KB",
+      size: "6KB",
       date: "2025-03-23",
       link: new URL("../../assets/zyw/SDS.md", import.meta.url).href,
     },
