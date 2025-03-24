@@ -9,8 +9,8 @@
 </tr>
 </thead>
 <tbody><tr>
-<td>Apr 10</td>
-<td>Zin, Bob</td>
+<td>Mar 24</td>
+<td>Yang, Zhu</td>
 <td>First version</td>
 </tr>
 </tbody></table>
@@ -30,126 +30,313 @@
 <h2>2. System Design</h2>
 <h3>2.1 Context</h3>
 <ul>
-<li>The embedded system module is divided in three part. The first part is the Router to respond to the requests from the server. The second part is four function components. They are called by Router to complete requests. The last part is DataCollector. It serves as a medium for interacting with sensors.</li>
-<li>The embedded system is planned to develop with python</li>
+<li>The software system module is divided into three parts. The first part is the router, which is used to send requests to the server as well as to respond to requests from the server. The second part is the server part. The router calls them to fulfill the request. The last part is the data collector. It is the medium with which the router gets the information.</li>
+<li>The software system is planned to develop with C# and C++</li>
 </ul>
 <h3>2.2 Architecture</h3>
-<h4>2.2.1 Component Diagram</h4>
+<h4>2.2.1 Worksflow Diagram</h4>
 <ul>
 <li>version 1.0</li>
 </ul>
-<p><img src="./component.png" alt="component"></p>
+<p><img src="../../assets/yang/worksflow.png" alt="worksflow"></p>
 <h2>3. Detailed Design</h2>
-<h3>3.1 Class Diagram</h3>
+<h3>3.1 Usecase Diagram</h3>
 <p>version 1.0</p>
-<p><img src="./class.png" alt="class"></p>
+<p><img src="../../assets/yang/%E7%94%A8%E4%BE%8B1.png" alt="usecase"></p>
 <h3>3.2 Class Design</h3>
-<h4>3.2.1 <code>Router</code></h4>
-<h5><code>Attribute</code></h5>
-<pre><code>IP: string		
+<h4>3.2.1 <code>User</code></h4>
+<h4><code>Attribute</code></h4>
+<pre><code>status:class Status
 </code></pre>
-<p>The IP of server</p>
-<pre><code>Port: int
+<pre><code>accounnt:string
 </code></pre>
-<pre><code>transactionlist: list
+<pre><code>time:string
 </code></pre>
-<p>The list of objects for processing requests.</p>
-<h5><code>Operation</code></h5>
-<pre><code>Router.getResponse(dataInput: dict): dict
+<h4><code>Operation</code></h4>
+<pre><code>
 </code></pre>
-<p>Call different functions of different objects in <code>transactionlist</code> according to <code>dataInput</code> to process server requests.</p>
-<p>Return <code>dict</code> always.</p>
-<pre><code>Router.start(): void
+<h4>3.2.2 <code>Status</code></h4>
+<h4><code>Attribute</code></h4>
+<pre><code>Status_name:string
 </code></pre>
-<p>Start sensor clients to connect with sensors. And start http server to  wait and process server requests.</p>
-<p>Return <code>None</code> always.</p>
-<h4>3.2.2 <code>Transaction</code></h4>
-<h5><code>Attribute</code></h5>
-<pre><code>collectorlist: list
+<h4><code>Operation</code></h4>
+<pre><code>
 </code></pre>
-<p>A list of SensorCollector objects.</p>
-<h5><code>Operation</code></h5>
-<pre><code>Transaction.getResponse(): dict
+<h4>3.2.2.1 <code>Login_Status</code></h4>
+<h4><code>Attribute</code></h4>
+<pre><code>Status_name:string=Login_Statue
 </code></pre>
-<p>Process requests received by Router.</p>
-<p>Return <code>dict</code> always. </p>
-<pre><code>Transaction.checkSuitable(dataInput: dict): bool
+<h4><code>Operation</code></h4>
+<pre><code>Login()
 </code></pre>
-<p>Check if the request type matches the current object.</p>
-<p>Return <code>true</code> if match successfully,  <code>false</code> otherwise.</p>
-<h4>3.2.3 <code>RealTimeData</code></h4>
-<h5><code>Attribute</code></h5>
-<h5><code>Operation</code></h5>
-<pre><code>RealTimeData.getResponse(): dict
+<pre><code>Registration()
 </code></pre>
-<p>Call <code>SensorCollector.getRealtimeData()</code> to request real-time data from sensors.</p>
-<p>Return <code>dict</code> always.</p>
-<pre><code>RealTimeData.checkSuitable(): bool
+<h4>3.2.2.2 <code>Run_Status</code></h4>
+<h4><code>Attribute</code></h4>
+<pre><code>Status_name:string=Run_Status
 </code></pre>
-<p>Check if the request matches the type of request that can be processed</p>
-<p>Return <code>true</code> if match successfully,  <code>false</code> otherwise.</p>
-<h4>3.2.4 <code>SensorStatus</code></h4>
-<h5><code>Attribute</code></h5>
-<h5><code>Operation</code></h5>
-<pre><code>SensorStatus.getResponse(): dict
+<h4><code>Operation</code></h4>
+<pre><code>HistoricalData()
 </code></pre>
-<p>Call <code>SensorCollector.getSensorStatus()</code> to request sensor status information from sensors.</p>
-<p>Return <code>dict</code> always.</p>
-<pre><code>SensorStatus.checkSuitable(): bool
+<pre><code>NewData()
 </code></pre>
-<p>Check if the request matches the type of request that can be processed</p>
-<p>Return <code>true</code> if match successfully,  <code>false</code> otherwise.</p>
-<h4>3.2.5 <code>SensorDetails</code></h4>
-<h5><code>Attribute</code></h5>
-<h5><code>Operation</code></h5>
-<pre><code>SensorDetails.getResponse(): dict
+<pre><code>ViewNewData()
 </code></pre>
-<p>Get the sensors detail.</p>
-<p>Return <code>dict</code> always.</p>
-<pre><code>SensorDetails.checkSuitable(): bool
+<h4>3.2.2.3 <code>Display_Status</code></h4>
+<h4><code>Attribute</code></h4>
+<pre><code>Status_name:string=Display_Status
 </code></pre>
-<p>Check if the request matches the type of request that can be processed</p>
-<p>Return <code>true</code> if match successfully,  <code>false</code> otherwise.</p>
-<h4>3.2.6 <code>SensorCalibration</code></h4>
-<h5><code>Attribute</code></h5>
-<h5><code>Operation</code></h5>
-<pre><code>SensorCalibration.getResponse(): dict
+<h4><code>Operation</code></h4>
+<pre><code>Display()
 </code></pre>
-<p>Call <code>SensorCollector.calibrateSensor()</code> to perform sensors calibration.</p>
-<p>Return <code>dict</code> always.</p>
-<pre><code>SensorCalibration.checkSuitable(): bool
+<h4>3.2.2.4 <code>Data_Status</code></h4>
+<h4><code>Attribute</code></h4>
+<pre><code>Status_name:string=Data_Status
 </code></pre>
-<p>Check if the request matches the type of request that can be processed</p>
-<p>Return <code>true</code> if match successfully,  <code>false</code> otherwise.</p>
-<h4>3.2.7 <code>SensorCollector</code></h4>
-<h5><code>Attribute</code></h5>
-<pre><code>datatranform: DataTranform
+<h4><code>Operation</code></h4>
+<pre><code>Update(string time,string account)
 </code></pre>
-<p>A object which can call <code>transformData()</code> to transform data.</p>
-<pre><code>Mac: string
+<pre><code>ViewList()
 </code></pre>
-<p>The Mac of sensor.</p>
-<h5><code>Operation</code></h5>
-<pre><code>SensorCollector.getRealtimeData(): dict
+<h4>3.2.2.5 <code>Getting_Status</code></h4>
+<h4><code>Attribute</code></h4>
+<pre><code>Status_name:string=Getting_Status
 </code></pre>
-<p>Request real-time data from sensors and then call <code>DataTransform.transformData()</code> to transform the format of data.</p>
-<p>Return <code>dict</code> always.</p>
-<pre><code>SensorCollector.getSensorStatus(): dict
+<h4><code>Operation</code></h4>
+<pre><code>EnterData()
 </code></pre>
-<p>Request request sensor status information from sensors and then call <code>DataTransform.transformData()</code> to transform the format of data.</p>
-<p>Return <code>dict</code> always.</p>
-<pre><code>SensorCollector.calibrate(): dict
+<pre><code>check()
 </code></pre>
-<p>Perform sensors calibration.</p>
-<p>Return <code>dict</code> always.</p>
-<pre><code>SensorCollector.start(): void
-</code></pre>
-<p>Connect with sensor, request data from sensor and check if connection is maintained, if not, reconnect with sensor.</p>
-<p>Return <code>None</code> always.</p>
-<h4>3.2.8 <code>DataTransform</code></h4>
-<h5><code>Attribute</code></h5>
-<h5><code>Operation</code></h5>
-<pre><code>DataTransform.transformData(originData: dytes, type: string): dict
-</code></pre>
-<p>Transform the format of data from <code>dytes</code> to <code>double</code>.</p>
-<p>Return <code>dict</code> always.</p>
+<!--
+#### 3.2.1 `Router`
+
+##### `Attribute`
+
+```
+IP: string		
+```
+
+The IP of server
+
+```
+Port: int
+```
+
+```
+transactionlist: list
+```
+
+The list of objects for processing requests.
+
+##### `Operation`
+
+```
+Router.getResponse(dataInput: dict): dict
+```
+
+Call different functions of different objects in `transactionlist` according to `dataInput` to process server requests.
+
+Return `dict` always.
+
+```
+Router.start(): void
+```
+
+Start sensor clients to connect with sensors. And start http server to  wait and process server requests.
+
+Return `None` always.
+
+
+
+#### 3.2.2 `Transaction`
+
+##### `Attribute`
+
+```
+collectorlist: list
+```
+
+A list of SensorCollector objects.
+
+##### `Operation`
+
+```
+Transaction.getResponse(): dict
+```
+
+Process requests received by Router.
+
+Return `dict` always. 
+
+```
+Transaction.checkSuitable(dataInput: dict): bool
+```
+
+Check if the request type matches the current object.
+
+Return `true` if match successfully,  `false` otherwise.
+
+
+
+#### 3.2.3 `RealTimeData`
+
+##### `Attribute`
+
+##### `Operation`
+
+```
+RealTimeData.getResponse(): dict
+```
+
+Call `SensorCollector.getRealtimeData()` to request real-time data from sensors.
+
+Return `dict` always.
+
+```
+RealTimeData.checkSuitable(): bool
+```
+
+Check if the request matches the type of request that can be processed
+
+Return `true` if match successfully,  `false` otherwise.
+
+
+
+#### 3.2.4 `SensorStatus`
+
+##### `Attribute`
+
+##### `Operation`
+
+```
+SensorStatus.getResponse(): dict
+```
+
+Call `SensorCollector.getSensorStatus()` to request sensor status information from sensors.
+
+Return `dict` always.
+
+```
+SensorStatus.checkSuitable(): bool
+```
+
+Check if the request matches the type of request that can be processed
+
+Return `true` if match successfully,  `false` otherwise.
+
+
+
+#### 3.2.5 `SensorDetails`
+
+##### `Attribute`
+
+##### `Operation`
+
+```
+SensorDetails.getResponse(): dict
+```
+
+Get the sensors detail.
+
+Return `dict` always.
+
+```
+SensorDetails.checkSuitable(): bool
+```
+
+Check if the request matches the type of request that can be processed
+
+Return `true` if match successfully,  `false` otherwise.
+
+
+
+#### 3.2.6 `SensorCalibration`
+
+##### `Attribute`
+
+##### `Operation`
+
+```
+SensorCalibration.getResponse(): dict
+```
+
+Call `SensorCollector.calibrateSensor()` to perform sensors calibration.
+
+Return `dict` always.
+
+```
+SensorCalibration.checkSuitable(): bool
+```
+
+Check if the request matches the type of request that can be processed
+
+Return `true` if match successfully,  `false` otherwise.
+
+
+
+#### 3.2.7 `SensorCollector`
+
+##### `Attribute`
+
+```
+datatranform: DataTranform
+```
+
+A object which can call `transformData()` to transform data.
+
+```
+Mac: string
+```
+
+The Mac of sensor.
+
+##### `Operation`
+
+```
+SensorCollector.getRealtimeData(): dict
+```
+
+Request real-time data from sensors and then call `DataTransform.transformData()` to transform the format of data.
+
+Return `dict` always.
+
+```
+SensorCollector.getSensorStatus(): dict
+```
+
+Request request sensor status information from sensors and then call `DataTransform.transformData()` to transform the format of data.
+
+Return `dict` always.
+
+```
+SensorCollector.calibrate(): dict
+```
+
+Perform sensors calibration.
+
+Return `dict` always.
+
+```
+SensorCollector.start(): void
+```
+
+Connect with sensor, request data from sensor and check if connection is maintained, if not, reconnect with sensor.
+
+Return `None` always.
+
+
+
+#### 3.2.8 `DataTransform`
+
+##### `Attribute`
+
+##### `Operation`
+
+```
+DataTransform.transformData(originData: dytes, type: string): dict
+```
+
+Transform the format of data from `dytes` to `double`.
+
+Return `dict` always.
+-->

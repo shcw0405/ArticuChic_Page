@@ -5,9 +5,9 @@
 
 Revision History: 
 
-| Date      | Author | Description |
-| ----      | ------ | ----------- |
-| Apr 10   | Zin, Bob | First version |
+| Date      | Author    | Description |
+| ----      | ------    | ----------- |
+| Mar 24    | Yang, Zhu | First version |
 
 <style>#rev +table td:nth-child(1) { white-space: nowrap }</style>
 <div id="rev"></div>
@@ -31,24 +31,24 @@ The document is organized as follows:
 ## 2. System Design
 ### 2.1 Context
 
-- The embedded system module is divided in three part. The first part is the Router to respond to the requests from the server. The second part is four function components. They are called by Router to complete requests. The last part is DataCollector. It serves as a medium for interacting with sensors.
-- The embedded system is planned to develop with python
+- The software system module is divided into three parts. The first part is the router, which is used to send requests to the server as well as to respond to requests from the server. The second part is the server part. The router calls them to fulfill the request. The last part is the data collector. It is the medium with which the router gets the information.
+- The software system is planned to develop with C# and C++
 
 ### 2.2 Architecture
-#### 2.2.1 Component Diagram
+#### 2.2.1 Worksflow Diagram
 - version 1.0
 
-![component](./component.png)
+![worksflow](../../assets/yang/worksflow.png)
 
 
 
 ## 3. Detailed Design
 
-### 3.1 Class Diagram
+### 3.1 Usecase Diagram
 
 version 1.0
 
-![class](./class.png)
+![usecase](../../assets/yang/用例1.png)
 
 
 
@@ -56,6 +56,92 @@ version 1.0
 
 
 
+
+#### 3.2.1 `User`
+#### `Attribute`
+```
+status:class Status
+```
+```
+accounnt:string
+```
+```
+time:string
+```
+#### `Operation`
+```
+
+```
+#### 3.2.2 `Status`
+#### `Attribute`
+```
+Status_name:string
+```
+#### `Operation`
+```
+
+```
+#### 3.2.2.1 `Login_Status`
+#### `Attribute`
+```
+Status_name:string=Login_Statue
+```
+#### `Operation`
+```
+Login()
+```
+```
+Registration()
+```
+#### 3.2.2.2 `Run_Status`
+#### `Attribute`
+```
+Status_name:string=Run_Status
+```
+#### `Operation`
+```
+HistoricalData()
+```
+```
+NewData()
+```
+```
+ViewNewData()
+```
+#### 3.2.2.3 `Display_Status`
+#### `Attribute`
+```
+Status_name:string=Display_Status
+```
+#### `Operation`
+```
+Display()
+```
+#### 3.2.2.4 `Data_Status`
+#### `Attribute`
+```
+Status_name:string=Data_Status
+```
+#### `Operation`
+```
+Update(string time,string account)
+```
+```
+ViewList()
+```
+#### 3.2.2.5 `Getting_Status`
+#### `Attribute`
+```
+Status_name:string=Getting_Status
+```
+#### `Operation`
+```
+EnterData()
+```
+```
+check()
+```
+<!--
 #### 3.2.1 `Router`
 
 ##### `Attribute`
@@ -287,3 +373,4 @@ DataTransform.transformData(originData: dytes, type: string): dict
 Transform the format of data from `dytes` to `double`.
 
 Return `dict` always.
+-->
