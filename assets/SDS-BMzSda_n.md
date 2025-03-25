@@ -72,6 +72,9 @@ time:string
 ```
 
 ```
+
+Records user information and relies on the status class for its specific operations
+
 #### 3.2.2 `Status`
 #### `Attribute`
 ```
@@ -81,6 +84,8 @@ Status_name:string
 ```
 
 ```
+Evoked by the user and realized through class inheritance to show state transitions when used by the user
+
 #### 3.2.2.1 `Login_Status`
 #### `Attribute`
 ```
@@ -93,6 +98,8 @@ Login()
 ```
 Registration()
 ```
+Provides two functions, login and registration, which are selected by the user in the login screen, if not previously registered, the registration function is carried out, otherwise the login is carried out and the appropriate information for a particular customer is loaded
+
 #### 3.2.2.2 `Run_Status`
 #### `Attribute`
 ```
@@ -108,6 +115,9 @@ NewData()
 ```
 ViewNewData()
 ```
+
+Three functions are provided, the first function is to extract historical information, the second function is to record the data recorded by the sensor and save it, and the third function is to view the latest recorded data.
+
 #### 3.2.2.3 `Display_Status`
 #### `Attribute`
 ```
@@ -117,6 +127,9 @@ Status_name:string=Display_Status
 ```
 Display()
 ```
+
+Demonstration function, data processing and then presented in the form of animation in the software.
+
 #### 3.2.2.4 `Data_Status`
 #### `Attribute`
 ```
@@ -129,6 +142,10 @@ Update(string time,string account)
 ```
 ViewList()
 ```
+
+Update operation: Select and update the corresponding data for the corresponding timestamp of the corresponding user by passing in the timestamp and account id.
+View List Operation: View the corresponding data after the previous update operation.
+
 #### 3.2.2.5 `Getting_Status`
 #### `Attribute`
 ```
@@ -141,6 +158,10 @@ EnterData()
 ```
 check()
 ```
+
+EnterData operation: Collect data.This status operation is evoked by the newdata operation of the run status
+check operation: check whether the data is legal or not
+
 <!--
 #### 3.2.1 `Router`
 
