@@ -47,7 +47,7 @@ const Members = () => {
       },
       email: "1026343326@qq.com",
       school: {
-        logo: new URL("../../assets/Jilin.png", import.meta.url).href,
+        logo: new URL("../../assets/Jilin.png", impnew URL("../../assets/zhu.jpg", import.meta.url).hrefort.meta.url).href,
       },
     },
     {
@@ -71,7 +71,7 @@ const Members = () => {
       name: "朱元武",
       role: "R.A./Developer",
       bio: "something for nothing",
-      avatar: new URL("../../assets/zhu.jpg", import.meta.url).href,
+      avatar: ,
       social: {
         github: "https://github.com/zzyuanyi",
         linkedin: "",
