@@ -371,33 +371,43 @@ const Home = () => {
     },
   ]);
 
-  // 项目里程碑
-  const [milestones] = useState([
-    {
-      id: "m-1",
-      name: "基础模型v0 & 基本文档",
-      description: "数据链路跑通的基础模型v0以及基本文档",
-      week: 5,
-      color: "#673AB7",
-      completed: false,
-    },
-    {
-      id: "m-2",
-      name: "MVP & 文档",
-      description: "MVP及其文档",
-      week: 7,
-      color: "#673AB7",
-      completed: false,
-    },
-    {
-      id: "m-3",
-      name: "完整项目 & 文档",
-      description: "完整项目及其文档",
-      week: 10,
-      color: "#673AB7",
-      completed: false,
-    },
-  ]);
+
+	const [milestones] = useState([
+	  {
+	    id: "m-1",
+	    name: "系统设计与需求文档完成",
+	    description: "完成功能模块设计文档、任务分解及开发计划",
+	    week: 2, // Week 3
+	    color: "#673AB7", // 紫色代表“文档驱动”
+	    completed: true,
+	  },
+	  {
+	    id: "m-2",
+	    name: "MVP 交付（第一次迭代）",
+	    description: "完成最小可用产品，含核心功能与配套说明文档",
+	    week: 4, // Week 5
+	    color: "#009688", // 青绿色代表“交付迭代”
+	    completed: false,
+	  },
+	  {
+	    id: "m-3",
+	    name: "技术文档与测试报告完善",
+	    description: "补充开发文档、测试报告、用户引导说明等",
+	    week: 6, // Week 7
+	    color: "#3F51B5", // 蓝色代表“文档整理阶段”
+	    completed: false,
+	  },
+	  {
+	    id: "m-4",
+	    name: "最终交付（第二次迭代）",
+	    description: "功能完整、交互完善、文档齐备的最终系统交付",
+	    week: 9, // Week 10
+	    color: "#FF5722", // 橙红色代表“最终交付”
+	    completed: false,
+	  },
+	  
+	]);
+
 
   // 项目特点
   const features = [
@@ -833,6 +843,15 @@ const Home = () => {
               </Box>
             </Box>
           </Box>
+   
+	<Box sx={{ mt: 2 }}>
+	  <Typography variant="body2" color="text.secondary">
+	    <strong>说明：</strong>“最终交付准备文档”指的是项目进入第二次交付前，
+	    所需的技术支撑资料准备，例如测试报告、部署文档、用户手册等。
+	    而“最终版本交付”则是指项目所有功能开发完成，配套文档完善后，
+	    向外部正式提交系统版本及所有资料的完整交付。
+	  </Typography>
+	</Box>
 
           {/* 图例 */}
           <Box sx={{ mt: 4, display: "flex", gap: 4, flexWrap: "wrap" }}>
