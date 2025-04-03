@@ -46,8 +46,8 @@ const Home = () => {
           id: "task-2-1",
           name: "Testing",
           planned: {
-            start: 7,
-            duration: 2,
+            start: 4,
+            duration: 7,
           },
           actual: {
             start: 7.5,
@@ -370,8 +370,6 @@ const Home = () => {
       ],
     },
   ]);
-
-
 
 	const [milestones] = useState([
 	  {
@@ -844,13 +842,13 @@ const Home = () => {
               </Box>
             </Box>
           </Box>
-   
-	<Box sx={{ mt: 2 }}>
-	  <Typography variant="body2" color="text.secondary">
+
+          <Box sx={{ mt: 2 }}>
+            <Typography variant="body2" color="text.secondary">
 	    <strong>Note: </strong>The "Final Delivery Preparation Documents" refer to the technical support materials required before the second delivery phase of the project, such as test reports, deployment guides, user manuals, etc.
 The "Final Version Delivery" refers to the formal submission of the complete system version and all related documentation to external stakeholders, after all functional development has been completed and the supporting documents have been finalized.
-	  </Typography>
-	</Box>
+            </Typography>
+          </Box>
 
           {/* 图例 */}
           <Box sx={{ mt: 4, display: "flex", gap: 4, flexWrap: "wrap" }}>
