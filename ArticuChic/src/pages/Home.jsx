@@ -372,41 +372,43 @@ const Home = () => {
   ]);
 
 
-	const [milestones] = useState([
-  {
-    id: "m-1",
-    name: "System Design and Requirement Documentation Completed",
-    description: "Complete functional module design documents, task decomposition, and development plan",
-    week: 2, // Week 3
-    color: "#673AB7", // Purple represents "Document-Driven"
-    completed: true,
-  },
-  {
-    id: "m-2",
-    name: "MVP Delivery (First Iteration)",
-    description: "Deliver the Minimum Viable Product, including core features and supporting documentation",
-    week: 4, // Week 5
-    color: "#009688", // Teal represents "Delivery Iteration"
-    completed: false,
-  },
-  {
-    id: "m-3",
-    name: "Technical Documentation and Test Report Finalization",
-    description: "Supplement development documents, test reports, user guidance materials, etc.",
-    week: 6, // Week 7
-    color: "#3F51B5", // Blue represents "Documentation Finalization Stage"
-    completed: false,
-  },
-  {
-    id: "m-4",
-    name: "Final Delivery (Second Iteration)",
-    description: "Final system delivery with complete features, refined interaction, and full documentation",
-    week: 9, // Week 10
-    color: "#FF5722", // Orange-red represents "Final Delivery"
-    completed: false,
-  },
-]);
 
+	const [milestones] = useState([
+	  {
+	    id: "m-1",
+	    name: "System Design and Requirement Documentation ",
+	    description: "...",
+	    week: 2,
+	    color: "#673AB7",
+	    completed: true,
+	  },
+	  {
+	    id: "m-2",
+	    name: "MVP Delivery ",
+	    description: "...",
+	    week: 4,
+	    color: "#009688",
+	    completed: false,
+
+	  },
+	  {
+	    id: "m-3",
+	    name: "Technical Documentation and Test Report",
+	    description: "...",
+	    week: 6,
+	    color: "#3F51B5",
+	    completed: false,
+	  },
+	  {
+	    id: "m-4",
+	    name: "Final Delivery ",
+	    description: "...",
+	    week: 9,
+	    color: "#FF5722",
+	    completed: false,
+
+	  },
+	]);
 
   // 项目特点
   const features = [
