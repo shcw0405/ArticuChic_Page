@@ -371,44 +371,40 @@ const Home = () => {
     },
   ]);
 
-
-	const [milestones] = useState([
-	  {
-	    id: "m-1",
-	    name: "System Design and Requirement Documentation ",
-	    description: "...",
-	    week: 2,
-	    color: "#673AB7",
-	    completed: true,
-	  },
-	  {
-	    id: "m-2",
-	    name: "MVP Delivery ",
-	    description: "...",
-	    week: 4,
-	    color: "#009688",
-	    completed: false,
-
-	  },
-	  {
-	    id: "m-3",
-	    name: "Technical Documentation and Test Report",
-	    description: "...",
-	    week: 6,
-	    color: "#3F51B5",
-	    completed: false,
-	  },
-	  {
-	    id: "m-4",
-	    name: "Final Delivery ",
-	    description: "...",
-	    week: 9,
-	    color: "#FF5722",
-	    completed: false,
-
-	  },
-	]);
-
+  const [milestones] = useState([
+    {
+      id: "m-1",
+      name: "System Design and Requirement Documentation ",
+      description: "...",
+      week: 2,
+      color: "#673AB7",
+      completed: true,
+    },
+    {
+      id: "m-2",
+      name: "MVP Delivery ",
+      description: "...",
+      week: 4,
+      color: "#009688",
+      completed: false,
+    },
+    {
+      id: "m-3",
+      name: "Technical Documentation and Test Report",
+      description: "...",
+      week: 6,
+      color: "#3F51B5",
+      completed: false,
+    },
+    {
+      id: "m-4",
+      name: "Final Delivery ",
+      description: "...",
+      week: 9,
+      color: "#FF5722",
+      completed: false,
+    },
+  ]);
 
   // 项目特点
   const features = [
@@ -847,8 +843,14 @@ const Home = () => {
 
           <Box sx={{ mt: 2 }}>
             <Typography variant="body2" color="text.secondary">
-         <strong>Note: </strong>The "Final Delivery Preparation Documents" refer to the technical support materials required before the second delivery phase of the project, such as test reports, deployment guides, user manuals, etc.
-The "Final Version Delivery" refers to the formal submission of the complete system version and all related documentation to external stakeholders, after all functional development has been completed and the supporting documents have been finalized.
+              <strong>Note: </strong>The "Final Delivery Preparation Documents"
+              refer to the technical support materials required before the
+              second delivery phase of the project, such as test reports,
+              deployment guides, user manuals, etc. The "Final Version Delivery"
+              refers to the formal submission of the complete system version and
+              all related documentation to external stakeholders, after all
+              functional development has been completed and the supporting
+              documents have been finalized.
             </Typography>
           </Box>
 
