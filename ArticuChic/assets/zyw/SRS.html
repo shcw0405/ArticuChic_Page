@@ -1,0 +1,952 @@
+<h1>Software Requirements Specification (SRS)</h1>
+<p>Revision History:</p>
+<table>
+<thead>
+<tr>
+<th>Data</th>
+<th>Author</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2025-4-14</td>
+<td>YuanwuZhu</td>
+<td>First Draft</td>
+</tr>
+</tbody></table>
+<!--| 2023-3-24 | Aidan, Bob | Add Sequence Diagrams                                        |
+| 2023-3-26 | Aidan      | Modify the workflow to a tabular form                        |
+| 2023-3-28 | Aidan      | Add section: <br/>Introduction, Concept of Operations, Behavioral Requirement<br/>Expected Subsets, Fundamental Assumptions |
+| 2023-3-29 | Aidan      | Delete one Use Case: Get Realtime Data (Async)               |
+| 2023-4-1  | Aidan      | Grammar mistakes                                             |
+| 2023-4-5  | Bob, Aidan | Delete the character of `Sensor` in Sequence Diagrams        |
+| 2023-5-11 | Aidan      | Add new Use Cases: 3.6 Send a "Motion Start" Signal to Server & 3.7 Offer QR Code of the Embedded Device to User |
+| 2023-5-12 | Bob, Aidan | Update 3.6 and 3.7 Use Cases, delete the response of Server in 3.6, and improve the description in 3.7 |
+-->
+<p>[TOC]</p>
+<h2>1. Introduction</h2>
+<h3>1.1 Intended Audience and Purpose</h3>
+<p>The purpose of this document is to provide information to guide the development process and ensure that all system requirements are met. The following entities may find this document useful:</p>
+<p>Key Customers - This page will detail all application requirements known to the production team. Customers should be able to use the information on this page to determine that their requirements will be properly reflected in the final product.</p>
+<p>Users - Potential users can use this document to determine the data flow of the application. In addition, there are a number of system requirements that need to be met before the application can be run. More information on these requirements can be found here.</p>
+<p>Development Team - The data interfaces provided by the SYS group are provided here, along with a schematic of the data pathways.</p>
+<p>Quality Assurance Team - By developing test procedures based on the system requirements, the Quality Assurance team can create a comprehensive test program to ensure that the requirements are met.</p>
+<h3>1.2 How to use the document</h3>
+<p>Table of Contents:</p>
+<ol>
+<li>Introduction</li>
+<li>Concept of Operations - a generalized description of the purpose of the application<br> 2.1 System Context - a detailed description of the specific system requirements needed for the application to operate<br> 2.2 System Capabilities - a prose description of all the capabilities available to the different groups during interaction<br> 2.3 Use cases - a detailed description of each functional requirement, describing the application environment before and after operation     </li>
+<li>use cases </li>
+<li>expected subset - the level of functionality expected at the checkpoints during the development process </li>
+<li>Base Assumptions - Here are the specific details of inputs, outputs, or behaviors that form the basis for the other requirements. </li>
+<li>expected changes - the future functionality and direction of the project </li>
+<li>Appendices - Detailed information to help you understand this document.<br> 8.1 Definitions and Acronyms - For ease of use of this document, any technical terms or acronyms will be listed here<br>    8.1.1 Definitions - Definitions of Technical or Special Terms<br>    8.1.2 Abbreviations and Acronyms - Any acronyms will be expanded here<br> 8.2 References - Any external references that are necessary or helpful to the understanding of this document will be listed here</li>
+</ol>
+<h2>2. Concept of Operations</h2>
+<h3>2.1 System Context</h3>
+<p><strong>System Requirements:</strong></p>
+<ul>
+<li>Operating System: Compatible with all operating systems due to the use of a web-based terminal</li>
+<li>Processor: RaspberryPi above Generation 3</li>
+<li>Memory: 4GB RAM</li>
+<li>HDD/SSD: 1 GB</li>
+</ul>
+<h3>2.2 System capabilities</h3>
+<ul>
+<li>Bluetooth Module required</li>
+<li>Network bandwidth 1Mbps</li>
+</ul>
+<h2>3. Use Cases</h2>
+<p><img src="./UseCaseDiagram/combination.svg" alt=""></p>
+<p>​		</p>
+<h3>3.1 Case 1: Sys for data</h3>
+<table>
+<thead>
+<tr>
+<th>Author</th>
+<th>Version</th>
+<th>Statue</th>
+<th>Date</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>YuanwuZHU</td>
+<td>1</td>
+<td>Unaudited</td>
+<td>2025-04-14</td>
+</tr>
+</tbody></table>
+<p><strong>Brief Introduction</strong></p>
+<p>The system provides an interface for data groups to access the data as well as a data return path.</p>
+<p><strong>Actors</strong></p>
+<ul>
+<li>SYSTEM,DATA</li>
+</ul>
+<p><strong>Pre-Conditions</strong></p>
+<ul>
+<li><p>The database can be used normally</p>
+</li>
+<li><p>The network is available and the server is able to send messages to the embedded system.</p>
+</li>
+</ul>
+<p><strong>Basic Flow</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Basic Flow</strong></th>
+<th>DATA</th>
+<th>System</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>The database requires an interface to upload and return data</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td></td>
+<td>The system gives the data group access to upload data as well as giving data back to the data group, allowing the data group to access</td>
+</tr>
+<tr>
+<td>3</td>
+<td></td>
+<td>Create a data path between ui and data, providing the data interfaces needed for login and access.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>The data group acquires the data through collection and counts it in the database</td>
+<td></td>
+</tr>
+</tbody></table>
+<!--**Exception Flows**
+
+| 4a   | Actor                                                        | System                 |
+| ---- | ------------------------------------------------------------ | ---------------------- |
+|      |                                                              | From Basic Flow step 3 |
+| 1    | If the server fails to receive the real-time data from the embedded system, the server **WILL NOT** retry to request again, the data it should have received will be regarded as the latest cached data or an INVALID data (if there are no value cached). |                        |
+-->
+<p><strong>Post Conditions</strong></p>
+<ol>
+<li>Data received should be cached by the data.</li>
+</ol>
+<p><strong>Supplemental Requirements</strong></p>
+<ol>
+<li><p>Depending on the network environment, the latency of real-time data may vary. Generally, real-time data has a delay of around 200 milliseconds.</p>
+</li>
+<li><p>Real-time data includes the angles, angular velocities, and accelerations in the XYZ directions, as well as the timestamp determined by the  system.</p>
+</li>
+</ol>
+<!-->
+<p><strong>Visual Model</strong></p>
+<img src="./UseCaseDiagram/Server Requests Real-time Data.svg" style="zoom:150%;" />
+-->
+**Sequence Diagram**
+
+<p><img src="./system_data.png" alt=""></p>
+<p><strong>Revision History</strong></p>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Author</th>
+<th>Description</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>2025-04-14</td>
+<td>YuanwuZHU</td>
+<td>Original Version</td>
+<td>Unaudited</td>
+</tr>
+</tbody></table>
+<h3>3.2 Case 2: SYSTEM for ANALYSIS</h3>
+<table>
+<thead>
+<tr>
+<th>Author</th>
+<th>Version</th>
+<th>Statue</th>
+<th>Date</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>YuanwuZHU</td>
+<td>1</td>
+<td>Unaudited</td>
+<td>2025-04-14</td>
+</tr>
+</tbody></table>
+<p><strong>Brief Introduction</strong></p>
+<p>The system service components provide support for the analysis team components, reflecting the interaction logic of the system service in data collection, transmission and other links to help the analysis team carry out data reception, anomaly detection and generation of structured results.</p>
+<p><strong>Actors</strong></p>
+<ul>
+<li>ANALYSIS</li>
+</ul>
+<p><strong>Pre-Conditions</strong></p>
+<ul>
+<li><p>The  system has been powered on.</p>
+</li>
+<li><p>Computing servers are working properly</p>
+</li>
+<li><p>The network is available and the server is able to send messages to the embedded system.</p>
+</li>
+</ul>
+<p><strong>Basic Flow</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Basic Flow</strong></th>
+<th>Actor</th>
+<th>System</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>The Sensor Data Receiver of the Analysis Team receives data from Monitoring &amp; Logging, API Gateway, and Data Pipeline of System Services.</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td></td>
+<td>Monitoring &amp; Logging, API Gateway, Data Pipeline, and Feedback Analyzer in System Services perform functions such as monitoring logging, interface management, data transfer, and feedback analysis.</td>
+</tr>
+<tr>
+<td>3</td>
+<td></td>
+<td>Feedback Analyzer also provides information for Anomaly Detection and Structured Results to assist in anomaly detection and results output.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Anomaly Detection utilizes received data and Feedback Analyzer information for anomaly identification.</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Structured Results combines Feedback Analyzer information to output structured analysis results.</td>
+<td></td>
+</tr>
+</tbody></table>
+<!--
+**Exception Flows**
+
+| 4a   | Actor                                                        | System                 |
+| ---- | ------------------------------------------------------------ | ---------------------- |
+|      |                                                              | From Basic Flow step 3 |
+| 1    | If the server fails to receive the real-time data from the embedded system, the server **WILL NOT** retry to request again, the data it should have received will be regarded as the latest cached data or an INVALID data (if there are no value cached). |                        |
+
+**Post Conditions**
+
+
+
+**Supplemental Requirements**
+
+1. Depending on the network environment, the latency of real-time data may vary. Generally, real-time data has a delay of around 200 milliseconds.
+
+2. Real-time data includes the angles, angular velocities, and accelerations in the XYZ directions, as well as the timestamp determined by the embedded system.
+
+**Visual Model**
+
+<img src="./UseCaseDiagram/Server Requests Real-time Data.svg" style="zoom:150%;" />
+-->
+<p><strong>Sequence Diagram</strong></p>
+<p><img src="./system_analysis.png" alt=""></p>
+<p><strong>Revision History</strong></p>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Author</th>
+<th>Description</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>2025-04-14</td>
+<td>YuanwuZHU</td>
+<td>Original Version</td>
+<td>Unaudited</td>
+</tr>
+</tbody></table>
+<h3>3.3 Case 3: SYSTEM for UI</h3>
+<table>
+<thead>
+<tr>
+<th>Author</th>
+<th>Version</th>
+<th>Statue</th>
+<th>Date</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>YuanwuZHU</td>
+<td>1</td>
+<td>Unaudited</td>
+<td>2025-04-14</td>
+</tr>
+</tbody></table>
+<p><strong>Brief Introduction</strong></p>
+<p>The UI Team includes pages for patient management, results feedback, etc., while the System Team covers components for user authentication, performance optimization, etc. The UI Team is connected by the “include” and “extend” relationships.They are connected through “include” and “extend” relationships:
+Functional implementation dependency: UI page relies on system components to provide basic services, such as Login Page relies on User Authentication to realize login authentication. Service Support: System components provide support for UI page functionality expansion, such as System Performance Optimization to ensure the performance of each UI page</p>
+<p><strong>Actors</strong></p>
+<ul>
+<li>UI</li>
+</ul>
+<p><strong>Pre-Conditions</strong></p>
+<ul>
+<li><p>The embedded system has been powered on.</p>
+</li>
+<li><p>The network is available and the server is able to send messages to the embedded system.</p>
+</li>
+</ul>
+<p><strong>Basic Flow</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Basic Flow</strong></th>
+<th>Actor</th>
+<th>System</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>The user initiates the login operation on the Login Page.</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td></td>
+<td>The “Login Page” calls the “User Authentication” component in the “System Team” via the “include” relationship.</td>
+</tr>
+<tr>
+<td>The “User Authentication” component in “Infrastructure” is called through the “include” relationship to authenticate the user and allow the user to enter the system related UI page.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td></td>
+<td>“Monitoring &amp; Logging” monitors the system status in real time to ensure stable operation of the UI</td>
+</tr>
+<tr>
+<td>4</td>
+<td>The “Display Data→Data Upload” component handles the data display logic, displays the data on the UI page, and supports the uploading of user-operated data, such as uploading feedback data in the “Result Feedback Page</td>
+<td></td>
+</tr>
+<tr>
+<td>“ uploads feedback data.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<!--
+**Exception Flows**
+
+| 4a   | Actor                                                        | System                 |
+| ---- | ------------------------------------------------------------ | ---------------------- |
+|      |                                                              | From Basic Flow step 3 |
+| 1    | If the server fails to receive the real-time data from the embedded system, the server **WILL NOT** retry to request again, the data it should have received will be regarded as the latest cached data or an INVALID data (if there are no value cached). |                        |
+
+**Post Conditions**
+
+1. Data received should be cached by the server.
+
+For Exception Flow 4a, The server detected the embedded system offline.
+-->
+<p><strong>Supplemental Requirements</strong></p>
+<ol>
+<li><p>Depending on the network environment, the latency of real-time data may vary. Generally, real-time data has a delay of around 200 milliseconds.</p>
+</li>
+<li><p>Real-time data includes the angles, angular velocities, and accelerations in the XYZ directions, as well as the timestamp determined by the embedded system.</p>
+</li>
+</ol>
+<!-->
+<p><strong>Visual Model</strong></p>
+<img src="./UseCaseDiagram/Server Requests Real-time Data.svg" style="zoom:150%;" />
+-->
+**Sequence Diagram**
+
+<p><img src="./system_ui.png" alt=""></p>
+<p><strong>Revision History</strong></p>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Author</th>
+<th>Description</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>2023-03-21</td>
+<td>Aidan, Bob</td>
+<td>Original Version</td>
+<td>Unaudited</td>
+</tr>
+</tbody></table>
+<!--
+### 3.1 Case 1: Server Requests Real-time Data
+
+| Author     | Version | Statue    | Date       |
+| ---------- | ------- | --------- | ---------- |
+| YuanwuZHU  | 1       | Unaudited | 2025-04-14 |
+
+**Brief Introduction**
+
+When the server requests the data, the process starts; When the server gets the data from the embedded system, the process ends.
+
+**Actors**
+
+- Server
+
+**Pre-Conditions**
+
+- The embedded system has been powered on.
+
+- The network is available and the server is able to send messages to the embedded system.
+
+**Basic Flow**
+
+| **Basic Flow** | Actor                                             | System                                                       |
+| -------------- | ------------------------------------------------- | ------------------------------------------------------------ |
+| 1              | The server **REQUESTs** to obtain real-time data. |                                                              |
+| 2              |                                                   | The embedded system get the real-time data from the sensors. |
+| 3              |                                                   | The embedded system make a **RESPONSE** to the server.       |
+| 4              | The server receives the information.              |                                                              |
+
+**Exception Flows**
+
+| 4a   | Actor                                                        | System                 |
+| ---- | ------------------------------------------------------------ | ---------------------- |
+|      |                                                              | From Basic Flow step 3 |
+| 1    | If the server fails to receive the real-time data from the embedded system, the server **WILL NOT** retry to request again, the data it should have received will be regarded as the latest cached data or an INVALID data (if there are no value cached). |                        |
+
+**Post Conditions**
+
+1. Data received should be cached by the server.
+
+For Exception Flow 4a, The server detected the embedded system offline.
+
+**Supplemental Requirements**
+
+1. Depending on the network environment, the latency of real-time data may vary. Generally, real-time data has a delay of around 200 milliseconds.
+
+2. Real-time data includes the angles, angular velocities, and accelerations in the XYZ directions, as well as the timestamp determined by the embedded system.
+
+**Visual Model**
+
+<img src="./UseCaseDiagram/Server Requests Real-time Data.svg" style="zoom:150%;" />
+
+**Sequence Diagram**
+
+![](./SequenceDiagram/RequestRealtimeData.svg)
+
+**Revision History**
+
+| Version | Date       | Author     | Description      | Status    |
+| ------- | ---------- | ---------- | ---------------- | --------- |
+| 1       | 2023-03-21 | Aidan, Bob | Original Version | Unaudited |
+<!--
+### 3.1 Case 1: Server Requests Real-time Data
+
+| Author     | Version | Statue    | Date       |
+| ---------- | ------- | --------- | ---------- |
+| YuanwuZHU  | 1       | Unaudited | 2025-04-14 |
+
+**Brief Introduction**
+
+When the server requests the data, the process starts; When the server gets the data from the embedded system, the process ends.
+
+**Actors**
+
+- Server
+
+**Pre-Conditions**
+
+- The embedded system has been powered on.
+
+- The network is available and the server is able to send messages to the embedded system.
+
+**Basic Flow**
+
+| **Basic Flow** | Actor                                             | System                                                       |
+| -------------- | ------------------------------------------------- | ------------------------------------------------------------ |
+| 1              | The server **REQUESTs** to obtain real-time data. |                                                              |
+| 2              |                                                   | The embedded system get the real-time data from the sensors. |
+| 3              |                                                   | The embedded system make a **RESPONSE** to the server.       |
+| 4              | The server receives the information.              |                                                              |
+
+**Exception Flows**
+
+| 4a   | Actor                                                        | System                 |
+| ---- | ------------------------------------------------------------ | ---------------------- |
+|      |                                                              | From Basic Flow step 3 |
+| 1    | If the server fails to receive the real-time data from the embedded system, the server **WILL NOT** retry to request again, the data it should have received will be regarded as the latest cached data or an INVALID data (if there are no value cached). |                        |
+
+**Post Conditions**
+
+1. Data received should be cached by the server.
+
+For Exception Flow 4a, The server detected the embedded system offline.
+
+**Supplemental Requirements**
+
+1. Depending on the network environment, the latency of real-time data may vary. Generally, real-time data has a delay of around 200 milliseconds.
+
+2. Real-time data includes the angles, angular velocities, and accelerations in the XYZ directions, as well as the timestamp determined by the embedded system.
+
+**Visual Model**
+
+<img src="./UseCaseDiagram/Server Requests Real-time Data.svg" style="zoom:150%;" />
+
+**Sequence Diagram**
+
+![](./SequenceDiagram/RequestRealtimeData.svg)
+
+**Revision History**
+
+| Version | Date       | Author     | Description      | Status    |
+| ------- | ---------- | ---------- | ---------------- | --------- |
+| 1       | 2023-03-21 | Aidan, Bob | Original Version | Unaudited |
+
+​		
+
+​	
+
+### 3.2 Case 2: Server Checks Whether the Embedded System is Reachable
+
+| Author     | Version | Statue    | Date       |
+| ---------- | ------- | --------- | ---------- |
+| Aidan, Bob | 1       | Unaudited | 2023-03-21 |
+
+**Brief Introduction**
+
+When the server wants to check if the embedded system is reachable, it sends an HTTP request message to the embedded system, and the process begins. When the server receives a response message from the embedded system, the process ends.
+
+**Actors**
+
+- Server
+
+**Pre-Conditions**
+
+- The embedded system has been powered on.
+
+**Basic Flow**
+
+| **Basic Flow** | Actor                                                        | System                                                       |
+| -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 1              | The server sends an  **REQUEST** message to the embedded system to determine whether the embedded system is available. |                                                              |
+| 2              |                                                              | The embedded system receives the request sent by the server. |
+| 3              |                                                              | The embedded system sends the **RESPONSE** message to the server. |
+| 4              | The server receives the response message.                    |                                                              |
+
+**Exception Flows**
+
+| 3a   | Actor | System                                                       |
+| ---- | ----- | ------------------------------------------------------------ |
+|      |       | From Basic Flow step 2                                       |
+| 1    |       | When the embedded system sends the response, a network error occurs. |
+| 2    |       | The embedded system does nothing, use case ends.             |
+
+| 4a   | Actor                                                        | System                 |
+| ---- | ------------------------------------------------------------ | ---------------------- |
+|      |                                                              | From Basic Flow step 3 |
+| 1    | When the server receives the response message, a network error occurs. |                        |
+| 2    | The server makes another attempt to send a **REQUEST**, server will retry for at most three times. There should be a 0.5-second interval between two **REQUESTs**. If server gets the **RESPONSE** from the embedded system, return to Basic Flow step 4. |                        |
+| 3    | After server has been failed to connect for three times, server confirms that the embedded system is unreachable, use case ends. |                        |
+
+**Post Conditions**
+
+1. The server confirms that the embedded system is working properly and accessible.
+
+In Exception Flow 4a, server confirms that the embedded system is inaccessible.
+
+**Supplemental Requirements**
+
+1. The Reachability check will be used under many conditions. For example, when a user checks whether an embedded system is connected to the network, the server needs to have a clear understanding of the accessibility of the embedded system, so the server begins a reachability check.
+2. During communication, we require that **REQUEST** and **RESPONSE** must correspond one-to-one. Otherwise, it indicates that a network failure has occurred and Exception Flows are triggered. (This constraint applies to all communication issues mentioned later.)
+
+**Visual Model**
+
+<img src="./UseCaseDiagram/Server Checks Whether the Sensor is Reachable.svg" style="zoom:150%;" />
+
+**Sequence Diagram**
+
+![](./SequenceDiagram/checkAccessibility.svg)
+
+**Revision History**
+
+| Version | Date       | Author     | Description      | Status    |
+| ------- | ---------- | ---------- | ---------------- | --------- |
+| 1       | 2023-03-21 | Aidan, Bob | Original Version | Unaudited |
+
+​			
+
+​	
+
+### 3.3 Case 3: Server Requests Sensor Calibration
+
+| Author     | Version | Statue    | Date       |
+| ---------- | ------- | --------- | ---------- |
+| Aidan, Bob | 1       | Unaudited | 2023-03-21 |
+
+**Brief Introduction**
+
+When the server requests sensor calibration, the process starts; After the server receives the calibration success response or calibration failure response sent by the embedded system, the process ends.
+
+**Actors**
+
+- Server
+
+**Pre-Conditions**
+
+- The embedded system has been powered on.
+- The network is available and the server is able to send messages to the embedded system.
+
+**Basic Flow**
+
+| **Basic Flow** | Actor                                              | System                                                       |
+| -------------- | -------------------------------------------------- | ------------------------------------------------------------ |
+| 1              | The server sends a sensor calibration **REQUEST**; |                                                              |
+| 2              |                                                    | After receiving the request, the embedded system sends a response to the server and performs calibration; |
+| 3              |                                                    | After the embedded system calibrates the sensor successfully, it sends a **RESPONSE** to the server. |
+| 4              | The server receives the information.               |                                                              |
+
+**Exception Flows**
+
+| 2a   | Actor                  | System                                                       |
+| ---- | ---------------------- | ------------------------------------------------------------ |
+|      | From Basic Flow step 1 |                                                              |
+| 1    |                        | When **REQUEST** received, if the sensors have been calibrated in the recently ten seconds, the embedded system will refuse to calibrate and **RESPONSE** the error message to the server, use case ends. |
+
+| 4a   | Actor                                                        | System                 |
+| ---- | ------------------------------------------------------------ | ---------------------- |
+|      |                                                              | From Basic Flow step 3 |
+| 1    | If server failed to receive the information, the server will check the reachability of the embedded system, and Requests Sensor Calibration again if the embedded system is accessible. |                        |
+
+**Post Conditions**
+
+1. The server will receive the information of calibration from the embedded system after the Basic Flow.
+
+**Supplemental Requirements**
+
+During calibration, it should be ensured that the sensor is placed on a horizontal stand. The calibration here refers to the acceleration calibration. Since the acceleration of the sensor is measured by the acceleration due to gravity, calibration should be performed before use.
+
+**Visual Model**
+
+<img src="./UseCaseDiagram/Server Requests Sensor Calibration.svg" style="zoom:150%;" />
+
+**Sequence Diagram**
+
+![](./SequenceDiagram/RequestSensorCalibration.svg)
+
+**Revision History**
+
+| Version | Date       | Author     | Description      | Status    |
+| ------- | ---------- | ---------- | ---------------- | --------- |
+| 1       | 2023-03-21 | Aidan, Bob | Original Version | Unaudited |
+
+​			
+
+​	
+
+### 3.4 Case 4: Server Requests to Obtain Sensor Details
+
+| Author     | Version | Statue    | Date       |
+| ---------- | ------- | --------- | ---------- |
+| Aidan, Bob | 1       | Unaudited | 2023-03-21 |
+
+**Brief Introduction**
+
+When the server requests to obtain the sensor details, the process begins, it ends when the server confirms the response has been received. 
+
+**Actors**
+
+- Server
+
+**Pre-Conditions**
+
+- The embedded system has been powered on.
+
+- The network is available and the server is able to send messages to the embedded system.
+
+**Basic Flow**
+
+| **Basic Flow** | Actor                                                        | System                                                       |
+| -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 1              | The server **REQUESTs** to obtain the sensor details, including sensor name, sensor type and sensor serial number. |                                                              |
+| 2              |                                                              | The embedded system  **RESPONSEs** sensors' details to the server. |
+| 3              | The server receives the information.                         |                                                              |
+
+**Exception Flows**
+
+| 3a   | Actor                                                        | System                 |
+| ---- | ------------------------------------------------------------ | ---------------------- |
+|      |                                                              | From Basic Flow step 2 |
+| 1    | If the server does not receive the **RESPONSE**, it should check the reachability of the embedded system, and try to obtain the sensor details again if the embedded system is reachable (return to Basic Flow step 1). |                        |
+| 2    | If the embedded system is not reachable, use case ends.      |                        |
+
+**Post Conditions**
+
+1. Server can obtain sensor details, including sensor model, sensor serial number.
+2. The application returns to the state before request.
+
+**Supplemental Requirements**
+
+1. The details of the sensors are part of the configuration data of the embedded system, even when some sensor runs out of battery, the sensor details **CAN** still be acquired.
+
+2. Sensor details contain sensor name, sensor type and sensor serial number.
+
+**Visual Model**
+
+<img src="./UseCaseDiagram/Server Requests Sensor Details.svg" style="zoom:150%;" />
+
+**Sequence Diagram**
+
+![](./SequenceDiagram/RequestSensorDetails.svg)
+
+**Revision History**
+
+| Version | Date       | Author     | Description      | Status    |
+| ------- | ---------- | ---------- | ---------------- | --------- |
+| 1       | 2023-03-21 | Aidan, Bob | Original Version | Unaudited |
+
+​			
+
+​	
+
+### 3.5 Case 5: Server Requests to Obtain the Sensor Status
+
+| Author     | Version | Statue    | Date       |
+| ---------- | ------- | --------- | ---------- |
+| Aidan, Bob | 1       | Unaudited | 2023-03-21 |
+
+**Brief Introduction**
+
+When the server requests to obtain the sensor status, the process begins; it ends when the server confirms the response has been received.
+
+**Actors**
+
+- Server
+
+**Pre-Conditions**
+
+- The embedded system has been powered on.
+- The network is available and the server is able to send messages to the embedded system.
+
+**Basic Flow**
+
+| **Basic Flow** | Actor                                                        | System                                                       | Sensor                                                       |
+| -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 1              | The server **REQUESTs** to obtain the current status of the sensor, including sensor connection status, sensor power. |                                                              |                                                              |
+| 2              |                                                              | The embedded system receives the request and try to connect with the sensors. |                                                              |
+| 3              |                                                              |                                                              | The sensors reply the embedded system with their status and power. |
+| 4              |                                                              | The embedded system collects the data from sensors and makes a **RESPONSE** to the server. |                                                              |
+| 5              | The server receives the information.                         |                                                              |                                                              |
+
+**Exception Flows**
+
+| 2a   | Actor                   | System                                                       | Sensor                                                       |
+| ---- | ----------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+|      | From Basic Flow step 1. |                                                              |                                                              |
+| 1    |                         | The embedded system receives the request and sends the request to the sensors. If the embedded system did not receive the response, the embedded system resend the request to the sensor for at most three times. |                                                              |
+| 2    |                         |                                                              | If some sensor fails to response for three times, it will be regarded as **OFF**, return to Basic Flow step 4. |
+
+| 5a   | Actor                                                        | System                  |
+| ---- | ------------------------------------------------------------ | ----------------------- |
+|      |                                                              | From Basic Flow step 4. |
+| 1    | If the server can not receive the **RESPONSE** from the embedded system. The server resends the **REQUEST** as in Basic Flow step 1 for at most three times, if the server gets the **RESPONSE** from the embedded system, use case ends normally. There should be a 0.5-second interval between two **REQUESTs**. |                         |
+| 2    | After three unsuccessful attempts, the server determines that the embedded system is unreachable, use case ends with exception. |                         |
+
+**Post Conditions**
+
+1. Users can obtain sensor status information, including sensor power after the Basic Flow ends.
+
+**Supplemental Requirements**
+
+None.
+
+**Visual Model**
+
+<img src="./UseCaseDiagram/Server Requests Sensor Status.svg" style="zoom:150%;" />
+
+**Sequence Diagram**
+
+<img src="./SequenceDiagram/RequestSensorStatus.svg" style="zoom:130%;" />
+
+**Revision History**
+
+| Version | Date       | Author     | Description      | Status    |
+| ------- | ---------- | ---------- | ---------------- | --------- |
+| 1       | 2023-03-21 | Aidan, Bob | Original Version | Unaudited |
+
+
+### 3.6 Send a "Motion Start" Signal to Server
+
+| Author     | Version | Statue    | Date       |
+| ---------- | ------- | --------- | ---------- |
+| Aidan | 1       | Unaudited | 2023-05-11 |
+
+**Brief Introduction**
+
+When the embedded system detects that the User starts moving, it sends a "motion start" signal to the server.
+
+**Actors**
+
+- Server
+
+**Pre-Conditions**
+
+- The embedded system has been powered on.
+- The network is available and the server is able to send messages to the embedded system.
+
+**Basic Flow**
+
+| **Basic Flow** | Actor | System                                                       |
+| -------------- | ----- | ------------------------------------------------------------ |
+| 1              |       | When the device is powered on, the embedded system starts monitoring real-time data and at some point the onset of motion is detected. |
+| 2              |       | The embedded system sends a "motion start" signal to the Server. |
+
+**Post Conditions**
+
+1. Server receives the "motion start" signal and can make corresponding processing according to the current situation.
+
+**Supplemental Requirements**
+
+1. Algorithm for monitoring motion: When the p-norm (the value of p is fixed) between two adjacent sensor data vectors detected during a period of time (fixed time length) is greater than a certain value, we think motion starts.
+2. We **do not guarantee** that Server is not recording while providing the "motion start" signal. After receiving the signal, Server does **not need** to send response to the embedded system, but processes the signal by itself according to the current system operation.
+
+**Visual Model**
+
+<img src="./UseCaseDiagram/Send a signal that motion starts to the server.svg" style="zoom:150%;" />
+
+**Sequence Diagram**
+
+<img src="./SequenceDiagram/MotionStart.svg" style="zoom:100%;" />
+
+**Revision History**
+
+| Version | Date       | Author     | Description      | Status    |
+| ------- | ---------- | ---------- | ---------------- | --------- |
+| 1       | 2023-05-11 | Aidan | Original Version | Unaudited |
+|2|2023-05-12|Bob, Aidan|Revised Version||
+
+### 3.7 Offer QR Code of the Embedded Device to User
+
+| Author     | Version | Statue    | Date       |
+| ---------- | ------- | --------- | ---------- |
+| Aidan | 1       | Unaudited | 2023-05-11 |
+
+**Brief Introduction**
+
+After the embedded device is turned on, the QR Code of the embedded device will display on the screen. And Android App use code scanning for device binding.
+
+**Actors**
+
+- User
+
+**Pre-Conditions**
+
+- The embedded device has been powered on.
+
+
+**Basic Flow**
+
+| **Basic Flow** | Actor                                                        | System                                                       |
+| -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 1              |                                                              | When the embedded device is turned on, the QR Code is displayed on the screen of raspberry pi. |
+| 2              | The user uses Android App to scan the QR code for device binding. |                                                              |
+
+**Visual Model**
+
+<img src="./UseCaseDiagram/Offer QR Code of the Embedded Device to User.svg" style="zoom:150%;" />
+
+**Revision History**
+
+| Version | Date       | Author     | Description      | Status    |
+| ------- | ---------- | ---------- | ---------------- | --------- |
+| 1       | 2023-05-11 | Aidan | Original Version | Unaudited |
+| 2 | 2023-05-12 | Bob, Aidan | Revised Version |  |
+-->
+<h2>4. Behavioral Requirements</h2>
+<h3>4.1 System Inputs and Outputs</h3>
+<h4>4.1.1 Inputs</h4>
+<ul>
+<li>HTTP POST request from server.</li>
+</ul>
+<h4>4.1.2 Outputs</h4>
+<ul>
+<li>HTTP Response for the request.</li>
+<li>Send a &quot;Motion Start&quot; Signal (HTTP POST request) to Server</li>
+<li>Offer QR Code of the Embedded Device to User</li>
+</ul>
+<h3>4.2 Quality Requirements</h3>
+<ul>
+<li>Request Response time: When the embedded system get a request from server, the response should be generated within 0.1 seconds;</li>
+<li>The Round-Trip time from embedded system to the server should below 0.3 seconds.</li>
+</ul>
+<h2>5. Expected Subsets</h2>
+<h3>5.1 L0</h3>
+<p>This version is able to collect data from sensors and store it locally.</p>
+<h3>5.2 L1</h3>
+<p>This version can upload the data collected from the sensor to the server in real time for real-time analysis; it can provide functions such as sensor status and sensor detailed information to the server; it can respond to requests from the server to detect whether it is reachable.</p>
+<h2>6. Fundamental Assumptions</h2>
+<p>*暂时为空</p>
+<h2>7. Expected Changes</h2>
+<p>*暂时为空</p>
+<h2>8. Appendices</h2>
+<h3>8.1 Definitions and acronyms</h3>
+<h4>8.1.1 Definitions</h4>
+<table>
+<thead>
+<tr>
+<th>Keyword</th>
+<th>Definitions</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>System</td>
+<td>The Embedded system</td>
+</tr>
+<tr>
+<td>INVALID data</td>
+<td>INVALID data refers to a frame of data that is zero at the corresponding data position for all sensors</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h4>8.1.2 Acronyms and abbreviations</h4>
+<table>
+<thead>
+<tr>
+<th>Acronym or Abbreviation</th>
+<th>Definitions</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3>8.2 References</h3>
