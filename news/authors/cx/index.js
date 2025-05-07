@@ -6,6 +6,7 @@ import cxNews5 from "./cxNewsweek5";
 import cxNews6 from "./cxNewsweek6";
 import cxNews7 from "./cxNewsweek7";
 import cxNews8 from "./cxNewsweek8";
+import cxNews9 from "./cxNewsweek9";
 
 // 蔡旭的所有新闻条目
 const cxNews = {
@@ -116,6 +117,21 @@ const cxNews = {
       id: "cx-news-8",
       title: "ArticuChic's Work from 4.24 to 4.30",
       date: "2025-04-30",
+      summary: "This Week's Work from the ArticuChic Team",
+      image: new URL(
+        "../../../ArticuChic/assets/cx/zhoubao.png",
+        import.meta.url
+      ).href,
+      category: "Weekly Work",
+      author: "ArticuChic Team",
+    },
+  },
+  "cx-news-9": {
+    component: cxNews9,
+    info: {
+      id: "cx-news-9",
+      title: "ArticuChic's Work from 5.1 to 5.7",
+      date: "2025-05-07",
       summary: "This Week's Work from the ArticuChic Team",
       image: new URL(
         "../../../ArticuChic/assets/cx/zhoubao.png",
